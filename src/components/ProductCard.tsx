@@ -21,12 +21,17 @@ export default function ProductCard({ product, onSelect }: Props) {
                     className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-110"
                 />
                 {product.badge && (
-                    <div className="absolute top-3 right-3 bg-mc-orange px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest neon-glow">
+                    <div className="absolute top-3 right-3 bg-mc-gold text-mc-dark px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest neon-glow z-10">
                         {product.badge}
                     </div>
                 )}
-                {product.limited && (
-                    <div className="absolute top-3 left-3 bg-red-500/90 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">
+                {product.original_price && (
+                    <div className="absolute top-3 left-3 bg-mc-green px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest z-10 shadow-[0_0_15px_rgba(34,197,94,0.3)]">
+                        Save {Math.round(((product.original_price - product.price_inr) / product.original_price) * 100)}%
+                    </div>
+                )}
+                {product.limited && !product.original_price && (
+                    <div className="absolute top-3 left-3 bg-red-500/90 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest z-10">
                         Removing Soon
                     </div>
                 )}

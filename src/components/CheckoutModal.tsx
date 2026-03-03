@@ -91,7 +91,10 @@ export default function CheckoutModal({ isOpen, onClose, total }: Props) {
                                 <div className="flex justify-between items-center mb-8">
                                     <div>
                                         <h2 className="text-2xl font-display font-black text-white uppercase tracking-tighter">Finalize Checkout</h2>
-                                        <p className="text-mc-gold font-bold text-xs uppercase tracking-widest mt-1">Total: ₹{total.toFixed(2)}</p>
+                                        <div className="flex items-center gap-2 mt-1">
+                                            <span className="text-mc-gold font-bold text-xs uppercase tracking-widest">Total: ₹{total.toFixed(2)}</span>
+                                            <span className="text-gray-600 text-[10px] uppercase font-bold tracking-widest">• {cart.length} Packages</span>
+                                        </div>
                                     </div>
                                     <button onClick={onClose} className="p-2 hover:bg-white/5 rounded-full text-gray-500">
                                         <X size={20} />

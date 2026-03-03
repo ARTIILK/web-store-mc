@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Coins, Plus, Minus, ShoppingCart, Zap, TrendingUp } from 'lucide-react';
 import { useStore } from '../context/StoreContext';
-import CoinStack3D from './CoinStack3D';
+import CoinStackLight from './CoinStackLight';
 
 export default function CoinPurchase() {
     const { cart, addToCart } = useStore();
@@ -42,7 +42,7 @@ export default function CoinPurchase() {
                     {/* 3D Coin Stack View */}
                     <div className="w-full md:w-1/2 relative group">
                         <div className="absolute inset-0 bg-mc-gold/20 blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-                        <CoinStack3D count={amount} />
+                        <CoinStackLight count={amount} />
 
                         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-4 px-6 py-3 bg-mc-dark/80 backdrop-blur-xl border border-white/10 rounded-2xl">
                             <TrendingUp className="text-mc-gold" size={18} />
