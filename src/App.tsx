@@ -30,7 +30,7 @@ function App() {
                 {/* Brand Column */}
                 <div className="md:col-span-2">
                   <div className="flex items-center gap-3 mb-6">
-                    <img src="/src/logo/woodmc.png" alt="Logo" className="h-10 w-auto" />
+                    <img src="/logo/woodmc.png" alt="Logo" className="h-10 w-auto" />
                     <span className="text-2xl font-display font-black tracking-tighter">
                       WOOD<span className="text-mc-gold">MC</span>
                     </span>

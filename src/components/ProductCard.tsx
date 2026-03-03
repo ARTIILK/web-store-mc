@@ -16,7 +16,7 @@ export default function ProductCard({ product, onSelect }: Props) {
         >
             <div className="relative h-48 bg-mc-brown/30 overflow-hidden">
                 <img
-                    src={`/src/preview/${product.image}`}
+                    src={`/preview/${product.image}`}
                     alt={product.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
@@ -47,9 +47,14 @@ export default function ProductCard({ product, onSelect }: Props) {
                 )}
 
                 <div className="mt-auto flex justify-between items-center">
-                    <div>
-                        <span className="text-2xl font-black text-white">₹{product.price_inr}</span>
-                        <span className="text-gray-500 text-xs ml-1 font-bold">INR</span>
+                    <div className="flex flex-col">
+                        {product.original_price && (
+                            <span className="text-gray-500 text-xs line-through font-bold">₹{product.original_price}</span>
+                        )}
+                        <div className="flex items-center">
+                            <span className="text-2xl font-black text-white">₹{product.price_inr}</span>
+                            <span className="text-gray-500 text-[10px] ml-1 font-black uppercase tracking-widest">INR</span>
+                        </div>
                     </div>
                     <button
                         className="p-2 bg-mc-gold/20 hover:bg-mc-gold text-mc-gold hover:text-mc-dark rounded-lg transition-all enchanted-glint"

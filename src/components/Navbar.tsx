@@ -33,7 +33,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto w-full flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          <img src="/src/logo/woodmc.png" alt="Logo" className="h-10 w-auto" />
+          <img src="/logo/woodmc.png" alt="Logo" className="h-10 w-auto" />
           <span className="text-2xl font-display font-black tracking-tighter">
             WOOD<span className="text-mc-gold">MC</span>
           </span>

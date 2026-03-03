@@ -5,6 +5,7 @@ export interface StoreItem {
     category: string;
     name: string;
     price_inr: number;
+    original_price?: number;
     coins?: number;
     description: string;
     image: string;
@@ -28,6 +29,7 @@ export const parseCSV = async (filePath: string): Promise<StoreItem[]> => {
                     .map((row: any) => ({
                         ...row,
                         price_inr: parseFloat(row.price_inr) || 0,
+                        original_price: row.original_price ? parseFloat(row.original_price) : undefined,
                         coins: row.coins ? parseInt(row.coins) : undefined,
                         limited: String(row.limited).toLowerCase() === 'true',
                         features: row.features ? row.features.split(';').map((f: string) => f.trim()) : [],

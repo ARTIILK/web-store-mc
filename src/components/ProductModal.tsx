@@ -30,7 +30,7 @@ export default function ProductModal({ product, onClose, onAddToCart }: Props) {
                     <div className="flex flex-col md:flex-row">
                         <div className="md:w-1/2 h-64 md:h-auto bg-mc-brown/30 relative">
                             <img
-                                src={`/src/preview/${product.image}`}
+                                src={`/preview/${product.image}`}
                                 alt={product.name}
                                 className="w-full h-full object-cover"
                             />
@@ -71,7 +71,12 @@ export default function ProductModal({ product, onClose, onAddToCart }: Props) {
 
                             <div className="flex items-center justify-between gap-4">
                                 <div>
-                                    <div className="text-[10px] font-bold text-gray-500 uppercase">Total Price</div>
+                                    <div className="text-[10px] font-bold text-gray-500 uppercase flex items-center gap-2">
+                                        Total Price
+                                        {product.original_price && (
+                                            <span className="line-through text-gray-600">₹{product.original_price}</span>
+                                        )}
+                                    </div>
                                     <div className="text-4xl font-black text-mc-gold">₹{product.price_inr}</div>
                                 </div>
                                 <button

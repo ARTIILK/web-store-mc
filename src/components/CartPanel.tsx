@@ -55,7 +55,7 @@ export default function CartPanel() {
                                     cart.map((item) => (
                                         <div key={item.id} className="flex gap-4 p-4 bg-white/5 rounded-2xl border border-white/5 group transition-all hover:border-white/10">
                                             <img
-                                                src={`/src/preview/${item.image}`}
+                                                src={`/preview/${item.image}`}
                                                 alt={item.name}
                                                 className="w-20 h-20 object-cover rounded-lg"
                                             />
