@@ -11,7 +11,7 @@ const specialPackage = {
   currency: 'INR',
   warning: 'Removing In Some Time!',
   description: 'The ultimate package for dedicated players',
-  image: '/src/preview/kit-preview-2.png',
+  image: '/src/preview/wood.png',
   items: [
     'Titan Rank (Lifetime)',
     '3000 Coins',
@@ -38,14 +38,14 @@ export default function Offers() {
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="text-center mb-16">
-        <motion.h1 
+        <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-4xl md:text-5xl font-display font-black text-white mb-4"
         >
           Special <span className="text-gradient">Packages</span>
         </motion.h1>
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
@@ -65,12 +65,12 @@ export default function Offers() {
         >
           {/* Image Container */}
           <div className="relative h-96 bg-mc-dark overflow-hidden">
-            <img 
+            <img
               src={specialPackage.image}
               alt={specialPackage.name}
               className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
             />
-            
+
             {/* Warning Badge */}
             <div className="absolute top-4 right-4 px-4 py-2 rounded-lg bg-red-500/90 text-white font-bold text-sm animate-pulse">
               {specialPackage.warning}
@@ -148,7 +148,7 @@ export default function Offers() {
                 <div className="grid grid-cols-1 md:grid-cols-2">
                   {/* Left - Image */}
                   <div className="h-96 md:h-auto bg-mc-brown/50 overflow-hidden flex items-center justify-center p-6">
-                    <img 
+                    <img
                       src={specialPackage.image}
                       alt={specialPackage.name}
                       className="w-full h-full object-cover rounded-lg"
