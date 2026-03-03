@@ -1,79 +1,51 @@
-# 🌲 WoodMC Official Web Store
+# 🌲 WoodMC Dynamic Store Engine (V2)
 
-![WoodMC Banner](/src/logo/woodmc.png)
+A completely rebuilt, data-driven Minecraft store frontend. This version is powered by a central CSV architecture, allowing for instantaneous updates without code modification.
 
-A premium, high-performance Minecraft web store built with modern web technologies. Designed for seamless user experience, stunning visuals, and powerful administrative control.
+## 🎯 The "Zero-Code" Philosophy
+This storefront is designed so that store administrators can manage the entire inventory using only a spreadsheet. 
+- **Change a Price**: Edit `store.csv` → Site updates.
+- **Add a Rank**: New row in `store.csv` → Appears instantly.
+- **Create a Sale**: Update `badge` or `limited` column → UI reacts.
 
-## ✨ Features
+## ✨ Core Features
+- **📊 CSV Engine**: Integrated `PapaParse` for high-performance data hydration.
+- **🏷️ Dynamic Categorization**: Automatically groups products into "Ranks", "Special", etc.
+- **🛒 Context Cart**: Custom state management for a fluid shopping experience.
+- **💎 Premium Minecraft UI**: Dark theme, gold gradients, and motion-enhanced cards.
+- **📱 Responsive Layout**: Pixel-perfect on mobile, tablet, and desktop.
 
-- **🛡️ 3D Armor Previews**: Interactive 3D models for kits using Three.js and React Three Fiber.
-- **💎 Premium Ranks System**: Multi-tier rank system (Hero, Jerry, Lion, Titan, Wood+) with detailed perk displays.
-- **🎁 Special Packages**: Limited-time offers and bundled deals with countdown/warning indicators.
-- **📊 Admin Panel**: Comprehensive dashboard for analytics, managing kits, ranks, and monitoring orders.
-- **👤 Player Dashboard**: Personalized profile area showing active ranks, playtime, and purchase history.
-- **🛒 Shopping Cart**: Fluid, side-panel cart implementation with real-time updates and multi-currency support.
-- **⚡ High Performance**: Built with Vite and React 19 for instantaneous page loads and smooth animations.
-- **🎨 Premium Aesthetics**: Glassmorphism, animated gradients, and custom Minecraft-themed UI components.
+## 🛠️ Data Structure (`store.csv`)
+| Column | Description |
+| :--- | :--- |
+| `id` | Unique identifier |
+| `category` | Controls which section the item appears in |
+| `name` | Product title |
+| `price_inr` | Cost in ₹ (INR) |
+| `coins` | Bonus store coins (if applicable) |
+| `description` | Short marketing text |
+| `image` | Filename in `src/preview/` |
+| `badge` | e.g., "HOT", "SALE" (Optional) |
+| `limited` | Set "true" to show "Removing Soon" warning |
+| `features` | Semi-colon separated list (e.g., "Sharp IV;Unb III") |
 
-## 🚀 Tech Stack
+## 🚀 Technical Implementation
+- **Vite 6** & **React 19**
+- **Tailwind CSS 4** (Utility-first styling)
+- **Framer Motion** (Fluid animations)
+- **Lucide React** (Consistent iconography)
+- **PapaParse** (CSV Parsing)
 
-- **Framework**: [React 19](https://react.dev/)
-- **Build Tool**: [Vite 6](https://vitejs.dev/)
-- **Animations**: [Motion](https://motion.dev/)
-- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
-- **3D Rendering**: [Three.js](https://threejs.org/) & [React Three Fiber](https://r3f.docs.pmnd.rs/)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **State Management**: [Zustand](https://docs.pmnd.rs/zustand/)
-- **Routing**: [React Router 7](https://reactrouter.com/)
-
-## 📁 Project Structure
-
+## 📁 Updated Structure
 ```text
 src/
-├── components/     # Reusable UI components (Cart, Navbar, 3D Previews)
-├── pages/          # Application views (Home, Ranks, Kits, Dashboard)
-│   └── Admin/      # Admin Panel pages (Analytics, Management)
-├── store/          # Zustand state stores (Cart, User, Currency)
-├── logo/           # Branding and logo assets
-├── preview/        # Rank and item preview images
-├── utils/          # Helper functions and utilities
-└── App.tsx         # Main application entry and routing
+├── components/     # Navbar, Cart, Product Cards, Modals
+├── context/        # StoreContext (Global State & Cart Logic)
+├── data/           # store.csv (The ONLY data source)
+├── pages/          # Layout and Sections
+├── utils/          # CSV utility functions
+└── index.css       # Premium Design Tokens
 ```
 
-## 🛠️ Getting Started
-
-### Prerequisites
-
-- Node.js (Latest LTS recommended)
-- npm or yarn
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-4. Build for production:
-   ```bash
-   npm run build
-   ```
-
-## 📝 Configuration
-
-- **Environment**: Copy `.env.example` to `.env` and configure your API endpoints/keys.
-- **Pricing**: Manage item pricing and descriptions in `src/pages/Ranks.tsx` and `src/pages/Kits.tsx`.
-
 ---
-
-Developed with ❤️ for the WoodMC Community.
+Developed by Antigravity for WoodMC Network.

@@ -1,0 +1,7 @@
+id,category,name,price_inr,coins,description,image,badge,limited,features
+1,ranks,Hero Rank,50,,Starter rank with basic perks,hero.png,,false,"Basic kit;Diamond armor;Starter tools"
+2,ranks,Jerry,100,,Mid tier rank,jerry.png,,false,"Enchanted gear;Extra commands"
+3,ranks,Lion,150,,Advanced combat rank,lion.png,,false,"Better armor;Golden apples;PvP boost"
+4,ranks,Titan,200,,High tier rank,titan.png,,false,"Full enchanted kit;Totems;Ender pearls"
+5,ranks,Wood+,250,,Premium rank,woodplus.png,,false,"Max perks;All commands;Priority access"
+6,special,Special Package,200,3000,Titan Rank + 3000 Coins,wood.png,HOT,true,"Includes Titan;3000 coins;Limited time"

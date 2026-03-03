@@ -1,5 +1,11 @@
 {
-  "name": "WoodMC Store",
-  "description": "A modern Minecraft server store website designed for selling ranks, kits, crates, and special offers.",
-  "requestFramePermissions": []
+  "name": "WoodMC Dynamic Store",
+  "description": "A fully dynamic, CSV-driven Minecraft store frontend built with React and Tailwind CSS.",
+  "tech_stack": [
+    "React 19",
+    "Vite 6",
+    "Tailwind 4",
+    "PapaParse"
+  ],
+  "data_source": "src/data/store.csv"
 }
