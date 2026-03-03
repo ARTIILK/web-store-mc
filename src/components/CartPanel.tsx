@@ -155,7 +155,7 @@ export default function CartPanel() {
                                     </div>
                                     <button
                                         onClick={() => setCheckoutOpen(true)}
-                                        className="w-full py-4 bg-gradient-to-r from-mc-gold to-mc-orange text-mc-dark font-black rounded-xl hover:shadow-[0_0_30px_#fbbf2466] transition-all flex items-center justify-center gap-2 group enchanted-glint neon-glow"
+                                        className="w-full py-4 bg-mc-gold text-mc-dark font-black rounded-xl transition-colors flex items-center justify-center gap-2 group"
                                     >
                                         Proceed to Checkout
                                         <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />

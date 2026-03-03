@@ -1,0 +1,158 @@
+Update the existing React application with the following changes.
+Refactor cleanly. Do not break routing or cart functionality.
+
+1️⃣ Fix Coins Page
+
+The Coins page must:
+
+Display ONLY coin packages.
+
+Remove any rank items from this page.
+
+Remove homepage promotional content from this page.
+
+Use a clean grid layout.
+
+Show:
+
+Package name
+
+Coin amount
+
+Price in INR
+
+Buy button
+
+Make sure:
+
+Products are filtered by category === "coins".
+
+No duplicated rendering logic.
+
+No unused components loaded on this page.
+
+If the data source is dynamic (CSV or JSON), filter properly instead of hardcoding.
+
+2️⃣ Completely Remove Purple Tint Effect From Entire Site
+
+Remove ALL purple overlays and tint effects globally.
+
+Specifically:
+
+Remove any background gradients with purple colors.
+
+Remove radial gradients.
+
+Remove blur overlays.
+
+Remove mix-blend-mode effects.
+
+Remove backdrop filters.
+
+Remove opacity layers that tint the whole screen.
+
+Remove any bg-purple, from-purple, via-purple, to-purple Tailwind classes.
+
+Replace with:
+
+Solid dark background (#0f0f0f or #111111).
+
+Clean neutral dark theme.
+
+Keep gold/orange accent colors only.
+
+Ensure no visual tint remains anywhere on:
+
+Homepage
+
+Ranks
+
+Coins
+
+Navbar
+
+Modals
+
+Cart
+
+The UI must look clean, sharp, and readable.
+
+3️⃣ Optimize for Low-End Devices
+
+Improve performance across the entire app:
+
+Remove Heavy Effects
+
+Disable heavy animations.
+
+Remove expensive shadows.
+
+Reduce blur usage.
+
+Remove unnecessary Framer Motion transitions.
+
+Avoid continuous animations.
+
+Optimize Rendering
+
+Use React.memo where useful.
+
+Avoid unnecessary re-renders.
+
+Lazy load heavy components if present.
+
+Optimize images (no oversized PNGs).
+
+Use compressed images.
+
+Reduce JavaScript Overhead
+
+Remove unused imports.
+
+Remove console logs.
+
+Remove unused libraries.
+
+Avoid complex state logic.
+
+CSS Optimization
+
+Avoid heavy gradients.
+
+Avoid large box-shadow blur radiuses.
+
+Keep layout simple.
+
+Use minimal transitions.
+
+4️⃣ Maintain Clean Structure
+
+Do not:
+
+Break routing.
+
+Break cart functionality.
+
+Hardcode duplicate logic.
+
+Keep:
+
+Responsive design.
+
+Clean component structure.
+
+Proper separation of pages.
+
+Expected Result
+
+Coins page properly filtered and clean.
+
+Purple tint fully removed from entire site.
+
+Simple dark theme.
+
+Faster load time.
+
+Smooth performance on low-end devices.
+
+No unnecessary visual effects.

@@ -155,7 +155,7 @@ export default function CheckoutModal({ isOpen, onClose, total }: Props) {
                                         <button
                                             type="submit"
                                             disabled={loading}
-                                            className="w-full py-4 bg-gradient-to-r from-mc-gold to-mc-orange text-mc-dark font-black rounded-xl hover:shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all flex items-center justify-center gap-2 disabled:opacity-50 neon-glow"
+                                            className="w-full py-4 bg-mc-gold text-mc-dark font-black rounded-xl transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
                                         >
                                             {loading ? (
                                                 <div className="w-6 h-6 border-4 border-mc-dark border-t-transparent rounded-full animate-spin" />

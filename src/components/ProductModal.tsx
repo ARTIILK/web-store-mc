@@ -28,11 +28,11 @@ export default function ProductModal({ product, onClose, onAddToCart }: Props) {
                     </button>
 
                     <div className="flex flex-col md:flex-row">
-                        <div className="md:w-1/2 h-64 md:h-auto bg-mc-brown/30 relative">
+                        <div className="md:w-1/2 h-64 md:h-auto bg-black/40 relative">
                             <img
                                 src={`/preview/${product.image}`}
                                 alt={product.name}
-                                className="w-full h-full object-contain p-8 transition-transform"
+                                className="w-full h-full object-contain p-8"
                             />
                             {product.limited && (
                                 <div className="absolute bottom-4 left-4 bg-red-500 px-4 py-2 rounded-lg text-xs font-black uppercase animate-pulse">
@@ -84,7 +84,7 @@ export default function ProductModal({ product, onClose, onAddToCart }: Props) {
                                         onAddToCart(product);
                                         onClose();
                                     }}
-                                    className="flex-grow py-4 bg-gradient-to-r from-mc-gold to-mc-orange text-mc-dark font-black rounded-xl hover:shadow-[0_0_30px_rgba(192,132,252,0.4)] transition-all flex items-center justify-center gap-2 enchanted-glint neon-glow"
+                                    className="flex-grow py-4 bg-mc-gold text-mc-dark font-black rounded-xl transition-colors flex items-center justify-center gap-2"
                                 >
                                     <ShoppingCart size={20} />
                                     Claim Package

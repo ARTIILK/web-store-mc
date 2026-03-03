@@ -11,7 +11,7 @@ function App() {
   return (
     <Router>
       <StoreProvider>
-        <div className="min-h-screen bg-mc-dark text-white selection:bg-mc-enchant/30 overflow-x-hidden">
+        <div className="min-h-screen bg-mc-dark text-white selection:bg-white/10 overflow-x-hidden">
           {/* 3D Dynamic Background - kept but check Scene3D for tint */}
           <Scene3D />
 

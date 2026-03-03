@@ -14,19 +14,19 @@ export default function ProductCard({ product, onSelect }: Props) {
             className="glass-card rounded-2xl overflow-hidden flex flex-col group cursor-pointer enchanted-glint"
             onClick={() => onSelect(product)}
         >
-            <div className="relative h-48 bg-mc-brown/30 overflow-hidden">
+            <div className="relative h-48 bg-black/40 overflow-hidden">
                 <img
                     src={`/preview/${product.image}`}
                     alt={product.name}
-                    className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-contain p-4"
                 />
                 {product.badge && (
-                    <div className="absolute top-3 right-3 bg-mc-gold text-mc-dark px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest neon-glow z-10">
+                    <div className="absolute top-3 right-3 bg-mc-gold text-mc-dark px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest z-10">
                         {product.badge}
                     </div>
                 )}
                 {product.original_price && (
-                    <div className="absolute top-3 left-3 bg-mc-green px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest z-10 shadow-[0_0_15px_rgba(34,197,94,0.3)]">
+                    <div className="absolute top-3 left-3 bg-mc-green px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest z-10">
                         Save {Math.round(((product.original_price - product.price_inr) / product.original_price) * 100)}%
                     </div>
                 )}
@@ -62,7 +62,7 @@ export default function ProductCard({ product, onSelect }: Props) {
                         </div>
                     </div>
                     <button
-                        className="p-2 bg-mc-gold/20 hover:bg-mc-gold text-mc-gold hover:text-mc-dark rounded-lg transition-all enchanted-glint"
+                        className="p-2 bg-mc-gold/20 hover:bg-mc-gold text-mc-gold hover:text-mc-dark rounded-lg transition-colors"
                         onClick={(e) => {
                             e.stopPropagation();
                             onSelect(product);
