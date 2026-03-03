@@ -12,11 +12,11 @@ export default function Footer() {
                 <span className="font-display font-bold text-xl text-mc-dark">WM</span>
               </div>
               <span className="font-display font-bold text-xl tracking-wider text-white group-hover:text-mc-gold transition-colors">
-                WINTER<span className="text-mc-orange">MC</span>
+                WOOD<span className="text-mc-orange">MC</span>
               </span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed max-w-md mb-6">
-              The official store for WinterMC. Enhance your gameplay with premium ranks, exclusive kits, and special crates. All purchases directly support the server's development and hosting.
+              The official store for WoodMC. Enhance your gameplay with premium ranks, exclusive kits, and special crates. All purchases directly support the server's development and hosting.
             </p>
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-mc-brown flex items-center justify-center text-gray-400 hover:text-mc-gold hover:bg-mc-brown/80 transition-all">
@@ -35,7 +35,6 @@ export default function Footer() {
             <h3 className="text-white font-display font-bold mb-6">Store Links</h3>
             <ul className="space-y-4">
               <li><Link to="/ranks" className="text-gray-400 hover:text-mc-gold transition-colors text-sm">Premium Ranks</Link></li>
-              <li><Link to="/kits" className="text-gray-400 hover:text-mc-gold transition-colors text-sm">Exclusive Kits</Link></li>
               <li><Link to="/offers" className="text-gray-400 hover:text-mc-orange transition-colors text-sm flex items-center gap-2">Special Offers <span className="bg-mc-orange/20 text-mc-orange text-[10px] px-2 py-0.5 rounded-full font-bold">HOT</span></Link></li>
               <li><Link to="/dashboard" className="text-gray-400 hover:text-mc-gold transition-colors text-sm">My Dashboard</Link></li>
             </ul>
@@ -53,7 +52,7 @@ export default function Footer() {
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-500 text-sm">
-            &copy; {new Date().getFullYear()} WinterMC. Not affiliated with Mojang AB.
+            &copy; {new Date().getFullYear()} WoodMC. Not affiliated with Mojang AB.
           </p>
           <p className="text-gray-500 text-sm flex items-center gap-1">
             Made with <Heart size={14} className="text-mc-orange" /> for the community

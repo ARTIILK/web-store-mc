@@ -140,7 +140,7 @@ export default function Dashboard() {
                 <tbody className="divide-y divide-white/5">
                   {[
                     { item: 'MVP+ Rank Upgrade', date: 'Oct 15, 2023', amount: '$15.00', status: 'Completed' },
-                    { item: 'Winter Bundle', date: 'Dec 01, 2023', amount: '$34.99', status: 'Completed' },
+                    { item: 'Limited Bundle', date: 'Dec 01, 2023', amount: '$34.99', status: 'Completed' },
                     { item: '5x Mythic Crates', date: 'Jan 10, 2024', amount: '$9.99', status: 'Completed' },
                   ].map((purchase, i) => (
                     <tr key={i} className="hover:bg-white/5 transition-colors">

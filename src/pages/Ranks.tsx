@@ -4,7 +4,7 @@ import { X, ArrowRight, ShoppingCart } from 'lucide-react';
 import { useCartStore, useCurrencyStore } from '../store';
 import { cn } from '../utils/cn';
 
-const kits = [
+export const kits = [
   {
     id: 'kit_hero',
     name: 'Hero Rank',

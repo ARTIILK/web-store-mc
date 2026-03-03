@@ -7,11 +7,12 @@ import { OrbitControls } from '@react-three/drei';
 import { cn } from '../utils/cn';
 import { useCurrencyStore } from '../store';
 import ArmorPreview from '../components/ArmorPreview';
+import { kits } from './Ranks';
 
 export default function Home() {
   const [copied, setCopied] = useState(false);
   const { formatPrice } = useCurrencyStore();
-  const serverIp = "play.woodmc.net";
+  const serverIp = "play.woodmc.fun";
 
   const handleCopyIp = () => {
     navigator.clipboard.writeText(serverIp);
@@ -103,7 +104,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Armor Showcase Section */}
+      {/* Top Ranks Gear Section */}
       <section className="py-20 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -113,7 +114,7 @@ export default function Home() {
               viewport={{ once: true }}
               className="text-3xl md:text-4xl font-display font-bold text-white mb-4"
             >
-              Premium <span className="text-gradient">Gear Showcase</span>
+              Chase the Top 3 <span className="text-gradient">Ranks Gear</span>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -122,71 +123,27 @@ export default function Home() {
               transition={{ delay: 0.1 }}
               className="text-gray-400 max-w-2xl mx-auto"
             >
-              Explore the incredible armor sets and weapons available in our exclusive kits
+              Check out the custom gear displays for our three highest-ranked players. Each rank has its own unique showcase.
             </motion.p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { name: 'Iron Kit', type: 'iron', color: '#a8a8a8', enchanted: false, price: 4.99 },
-              { name: 'Diamond Kit', type: 'diamond', color: '#33ebcb', enchanted: false, price: 14.99 },
-              { name: 'God Kit', type: 'netherite', color: '#443a3b', enchanted: true, price: 29.99 }
-            ].map((kit, idx) => (
+            {kits.slice(0,3).map((kit, idx) => (
               <motion.div
-                key={kit.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.15 }}
-                className="glass-card rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition-all duration-300 group"
+                key={kit.id}
+                whileHover={{ y: -10 }}
+                className="glass-card rounded-2xl p-6 relative overflow-hidden group"
               >
-                {/* 3D Preview */}
-                <div className="h-64 w-full bg-gradient-to-b from-mc-dark to-mc-brown/50 relative">
-                  <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
-                    <Suspense fallback={null}>
-                      <ArmorPreview 
-                        color={kit.color} 
-                        enchanted={kit.enchanted}
-                        armorType={kit.type as any}
-                      />
-                      <OrbitControls 
-                        enablePan={false} 
-                        minDistance={3} 
-                        maxDistance={8}
-                        autoRotate
-                        autoRotateSpeed={2}
-                      />
-                    </Suspense>
-                  </Canvas>
-                  
-                  {kit.enchanted && (
-                    <div className="absolute top-4 right-4 px-2 py-1 rounded-full bg-purple-500/20 border border-purple-500/50 text-purple-300 text-xs font-bold uppercase tracking-wider flex items-center gap-1">
-                      <Zap size={10} /> Enchanted
-                    </div>
-                  )}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-mc-dark/20 rounded-full blur-3xl -mr-10 -mt-10 transition-all duration-500 group-hover:bg-mc-dark/40" />
+                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-mc-gold to-mc-orange flex items-center justify-center mb-6 shadow-lg">
+                  <Shield size={32} className="text-white" />
                 </div>
-
-                {/* Kit Info */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text" style={{
-                    backgroundImage: kit.enchanted ? 'none' : `linear-gradient(to right, ${kit.color}, ${kit.color})`,
-                  }}>
-                    {kit.name}
-                  </h3>
-                  <p className="text-gray-400 text-sm mb-4">
-                    {kit.enchanted ? 'Fully enchanted netherite gear' : 'Premium armor and tools'}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-lg font-bold" style={{ color: kit.color }}>
-                      {formatPrice(kit.price)}
-                    </span>
-                    <Link
-                      to="/kits"
-                      className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white text-sm font-medium transition-all duration-300"
-                    >
-                      View Kit
-                    </Link>
-                  </div>
+                <h3 className="text-2xl font-display font-bold text-white mb-2">{kit.name} Gear</h3>
+                <p className="text-gray-400 mb-6 line-clamp-2">{kit.description}</p>
+                <div className="flex items-center justify-between mt-auto">
+                  <span className="text-2xl font-bold text-mc-gold">₹{kit.price.toFixed(2)}</span>
+                  <Link to="/ranks" className="px-4 py-2 rounded-lg bg-mc-gold hover:bg-mc-gold/80 text-mc-dark font-medium transition-all duration-300">
+                    View Rank
+                  </Link>
                 </div>
               </motion.div>
             ))}
@@ -245,8 +202,8 @@ export default function Home() {
                 <Zap size={32} className="text-gray-300" />
               </div>
               
-              <h3 className="text-2xl font-display font-bold text-gray-400 mb-2">Winter Bundle</h3>
-              <p className="text-gray-500 mb-6 line-clamp-2">Get the MVP rank, 5x Mythic Crates, and exclusive Winter cosmetics.</p>
+              <h3 className="text-2xl font-display font-bold text-gray-400 mb-2">Limited Bundle</h3>
+              <p className="text-gray-500 mb-6 line-clamp-2">Get the MVP rank, 5x Mythic Crates, and exclusive cosmetics.</p>
               
               <div className="flex items-center justify-between mt-auto">
                 <div className="flex flex-col">
