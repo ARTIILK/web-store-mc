@@ -51,16 +51,10 @@ function AmbientParticles() {
 
 export default function Scene3D() {
     return (
-        <div className="fixed inset-0 z-0 pointer-events-none opacity-20 transition-opacity duration-1000">
+        <div className="fixed inset-0 z-0 pointer-events-none opacity-10 grayscale transition-opacity duration-1000">
             <Canvas camera={{ position: [0, 0, 30], fov: 75 }} dpr={[1, 2]}>
-                <ambientLight intensity={0.2} />
-                <pointLight position={[10, 10, 10]} color="#fbbf24" intensity={0.5} />
-
-                <Stars radius={100} depth={50} count={2000} factor={4} saturation={0} fade speed={0.5} />
-                <Sparkles count={50} scale={30} size={1} speed={0.2} color="#fbbf24" opacity={0.2} />
-
-                <AmbientParticles />
-
+                <ambientLight intensity={0.1} />
+                <Stars radius={100} depth={50} count={1000} factor={4} saturation={0} fade speed={0.5} />
                 <fog attach="fog" args={['#070707', 20, 45]} />
             </Canvas>
         </div>

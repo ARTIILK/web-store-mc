@@ -1,0 +1,117 @@
+Modify the existing React application according to the following requirements.
+Do not patch randomly. Refactor cleanly and maintain good component structure.
+
+1️⃣ Navigation Structure Update
+
+Update the navbar to contain exactly 3 main categories:
+
+Homepage
+
+Ranks
+
+Coins
+
+Remove “Special” as a separate navigation category.
+
+Use proper routing (React Router). Structure routes like:
+
+/ → Homepage
+
+/ranks → Ranks Page
+
+/coins → Coins Page
+
+Ensure navigation works properly without reload.
+
+2️⃣ Homepage Content Replacement
+
+Replace the current homepage hero content completely.
+
+Add the following content exactly as written, formatted cleanly and professionally:
+
+🌲 Welcome to WoodMC Store!
+Where your Minecraft adventure gets stronger and better!
+
+💎 Super Cheap Prices!
+Best deals on ranks, kits, and items — without breaking the bank!
+
+🔥 Special Package LIVE Now!
+Limited-time bundle with exclusive rewards — grab it before it’s gone!
+
+⚔️ Upgrade your gameplay with powerful ranks and perks.
+🏹 Unlock epic kits and dominate the server.
+🏰 Build bigger, mine faster, and rule stronger!
+
+🎁 Why choose WoodMC?
+✔ Budget-friendly prices
+✔ Exclusive special package
+✔ Amazing rewards
+✔ Trusted & active server
+
+Discord - discord.gg/woodmc
+IP - play.woodmc.fun
+
+Make the layout clean, centered, and visually balanced.
+Keep the dark theme but remove excessive visual effects.
+
+3️⃣ Move Content to Proper Pages
+
+Ranks Page:
+
+Display only rank products.
+
+Show rank cards in grid format.
+
+Include price and purchase button.
+
+Remove hero promotional section from this page.
+
+Coins Page:
+
+Display only coin packages.
+
+Clean grid layout.
+
+No homepage content here.
+
+4️⃣ Disable Tint Effect
+
+Remove the tinted overlay effect across the site.
+
+Specifically:
+
+Remove any gradient overlays that tint the whole background.
+
+Remove any radial glow or blur layer affecting readability.
+
+Keep a clean dark background.
+
+Do not use heavy blend modes or opacity layers.
+
+The site should look clean and sharp without colored screen tint.
+
+5️⃣ Maintain Clean Code
+
+Do not hardcode duplicate layouts.
+
+Keep reusable components.
+
+Maintain responsiveness.
+
+Keep styling consistent.
+
+Do not break cart functionality.
+
+Final Result Should Be:
+
+3 clear navigation categories
+
+Updated homepage with client content
+
+Clean Ranks page
+
+Clean Coins page
+
+Tint effect removed
+
+Professional dark theme maintained

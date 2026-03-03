@@ -2,57 +2,45 @@ import { ShoppingCart, Menu, X } from 'lucide-react';
 import { useStore } from '../context/StoreContext';
 import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Navbar() {
-  const { cart, setCartOpen, categories } = useStore();
+  const { cart, setCartOpen } = useStore();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
+  const location = useLocation();
 
   const navLinks = [
-    ...categories.map(cat => ({
-      name: cat.charAt(0).toUpperCase() + cat.slice(1),
-      href: `#${cat.toLowerCase()}`
-    })),
-    { name: 'Coins', href: '#coins' }
+    { name: 'Homepage', href: '/' },
+    { name: 'Ranks', href: '/ranks' },
+    { name: 'Coins', href: '/coins' }
   ];
 
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      const offset = 100;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-      setMobileMenuOpen(false);
-    }
-  };
+  const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 w-full z-50 glass-panel border-b border-white/10 px-6 h-20 flex items-center">
+    <nav className="fixed top-0 w-full z-50 bg-mc-dark/80 backdrop-blur-md border-b border-white/10 px-6 h-20 flex items-center">
       <div className="max-w-7xl mx-auto w-full flex justify-between items-center">
         {/* Logo */}
-        <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        <Link to="/" className="flex items-center gap-3">
           <img src="/logo/woodmc.png" alt="Logo" className="h-10 w-auto" />
           <span className="text-2xl font-display font-black tracking-tighter">
             WOOD<span className="text-mc-gold">MC</span>
           </span>
-        </div>
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
-              href={link.href}
-              onClick={(e) => scrollToSection(e, link.href)}
-              className="text-sm font-bold uppercase tracking-widest text-gray-400 hover:text-mc-gold transition-colors"
+              to={link.href}
+              className={`text-sm font-bold uppercase tracking-widest transition-colors ${
+                isActive(link.href) ? 'text-mc-gold' : 'text-gray-400 hover:text-mc-gold'
+              }`}
             >
               {link.name}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -90,17 +78,19 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-20 left-0 w-full bg-mc-dark border-b border-white/10 p-6 flex flex-col gap-4 md:hidden glass-panel"
+            className="absolute top-20 left-0 w-full bg-mc-dark border-b border-white/10 p-6 flex flex-col gap-4 md:hidden"
           >
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
-                onClick={(e) => scrollToSection(e, link.href)}
-                className="text-lg font-black uppercase tracking-tighter text-gray-400 hover:text-mc-gold transition-colors"
+                to={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`text-lg font-black uppercase tracking-tighter transition-colors ${
+                  isActive(link.href) ? 'text-mc-gold' : 'text-gray-400 hover:text-mc-gold'
+                }`}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </motion.div>
         )}

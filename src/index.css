@@ -69,14 +69,12 @@
   }
 
   .glass-card {
-    @apply bg-white/[0.02] backdrop-blur-md border border-white/5 transition-all duration-500 relative overflow-hidden;
+    @apply bg-white/[0.02] border border-white/5 transition-all duration-500 relative overflow-hidden;
   }
 
-  /* Separate the hover state to avoid issues with compound utilities */
   .glass-card:hover {
-    background-color: rgba(255, 255, 255, 0.06);
+    background-color: rgba(255, 255, 255, 0.04);
     border-color: rgba(251, 191, 36, 0.4);
-    box-shadow: 0 0 50px rgba(251, 191, 36, 0.1);
   }
 
   /* Enchantment Glint Effect */
@@ -97,12 +95,11 @@
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-br from-mc-gold via-mc-orange to-mc-enchant animate-gradient-shift;
-    background-size: 200% auto;
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-mc-gold via-mc-orange to-white;
   }
 
   .neon-glow {
-    box-shadow: 0 0 25px rgba(251, 191, 36, 0.3);
+    box-shadow: 0 0 15px rgba(251, 191, 36, 0.2);
   }
 }
 
