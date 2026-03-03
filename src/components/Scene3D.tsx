@@ -4,7 +4,7 @@ import { Stars, Sparkles } from '@react-three/drei';
 import * as THREE from 'three';
 
 function AmbientParticles() {
-    const count = 30; // Further reduced for performance
+    const count = 3; // Further reduced for performance
     const mesh = useRef<THREE.InstancedMesh>(null);
     const dummy = useMemo(() => new THREE.Object3D(), []);
 
