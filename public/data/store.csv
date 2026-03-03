@@ -1,7 +1,7 @@
 id,category,name,price_inr,original_price,coins,description,image,badge,limited,features
-1,ranks,Hero Rank,50.00,75.00,,Start your journey as a Hero with essential gear.,hero.png,,false,"Protection 3 Armor;Sharpness 4 Sword And Axe;Efficiency 4 Pickaxe"
-2,ranks,Jerry,100.00,150.00,,Unlock the power of the Jerry tier.,jerry.png,,false,"Protection 4 Armor;Sharpness 4 Sword And Axe;Efficiency 4 Pickaxe"
-3,ranks,Lion,150.00,200.00,,Roar with the strength of the Lion rank.,lion.png,POPULAR,false,"Protection 4 Armor;Blast Protection 4 Armor;Sharpness 5 Sword And Axe;Efficiency 5 Pickaxe"
-4,ranks,Titan,200.00,300.00,,Become an unstoppable Titan on the server.,titan.png,,false,"Protection 4 Armor;Blast Protection 4 Armor;Sharpness 5 Sword And Axe;Efficiency 5 Pickaxe"
-5,ranks,Wood+,250.00,500.00,1000,The ultimate rank for the most dedicated players.,wood.png,BEST VALUE,false,"All Protection 4 On Armor;Sharpness 5 And Smite 5 Sword;Efficiency 5 Axe And Pickaxe;Free 1000 Coins With Rank"
+1,ranks,Hero Rank,50.00,75.00,,Perfect starter premium rank.,hero.png,,false,"3 Homes;3 Auction House Listings;2 Vaults;/kit hero;/sit;/craft;/hat;/recipe"
+2,ranks,Jerry,100.00,150.00,,Enhanced utility and storage perks.,jerry.png,,false,"5 Homes;5 Auction House Listings;4 Vaults;/kit jerry;/sit;/craft;/hat;/recipe;/enderchest;/smithingtable"
+3,ranks,Lion,150.00,200.00,,Advanced rank for serious players.,lion.png,POPULAR,false,"7 Homes;7 Auction House Listings;5 Vaults;/kit lion;/sit;/craft;/hat;/recipe;/enderchest;/smithingtable"
+4,ranks,Titan,200.00,300.00,,High-tier power and convenience.,titan.png,,false,"10 Homes;10 Auction House Listings;6 Vaults;/kit titan;/sit;/craft;/hat;/recipe;/enderchest;/smithingtable;/anvil"
+5,ranks,Wood+,250.00,500.00,1000,Ultimate Rank - The most powerful rank on WoodMC.,wood.png,BEST VALUE,false,"Access to All Kits;All Rank Perks;Unlimited Vaults;Unlimited Homes;Custom Prefix in Chat;Complete access to every command"
 6,special,Special Package,200.00,1000.00,3000,Titan Rank + 3000 Coins Bundle.,wood.png,HOT,true,"Includes Titan Rank;3000 Bonus Coins;Lifetime Access;Special Discord Role"

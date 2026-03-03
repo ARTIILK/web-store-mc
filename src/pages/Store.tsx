@@ -4,11 +4,19 @@ import { useStore } from '../context/StoreContext';
 import ProductCard from '../components/ProductCard';
 import ProductModal from '../components/ProductModal';
 import { StoreItem } from '../utils/csvParser';
-import { Star, ChevronDown } from 'lucide-react';
+import { Star, ChevronDown, Check, Zap, Shield, TrendingUp, Sparkles } from 'lucide-react';
+import CoinPurchase from '../components/CoinPurchase';
 
 export default function Store() {
     const { products, categories, loading, addToCart } = useStore();
     const [selectedProduct, setSelectedProduct] = useState<StoreItem | null>(null);
+
+    const benefits = [
+        { icon: Shield, title: "More Storage & Homes", desc: "Gain more /homes and auction listings." },
+        { icon: Zap, title: "Exclusive Kits", desc: "Access high-tier kits instantly." },
+        { icon: Sparkles, title: "Premium Identity", desc: "Stand out with custom chat prefixes." },
+        { icon: TrendingUp, title: "Competitive Edge", desc: "Unlock power-user commands." }
+    ];
 
     if (loading) {
         return (
@@ -109,6 +117,39 @@ export default function Store() {
                         </div>
                     </section>
                 ))}
+
+                <CoinPurchase />
+
+                {/* Why Upgrade Section */}
+                <section className="pt-20 border-t border-white/5">
+                    <div className="text-center mb-16">
+                        <h2 className="text-4xl md:text-5xl font-display font-black uppercase tracking-tighter mb-4">
+                            Why Upgrade on <span className="text-mc-gold">WoodMC?</span>
+                        </h2>
+                        <p className="text-gray-500 max-w-xl mx-auto">
+                            Join the ranks of our most dedicated players and unlock the full potential of your survival journey.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {benefits.map((b, idx) => (
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: idx * 0.1 }}
+                                className="p-8 rounded-3xl bg-white/[0.02] border border-white/5 hover:border-mc-gold/20 transition-all group enchanted-glint"
+                            >
+                                <div className="w-12 h-12 bg-mc-gold/10 rounded-2xl flex items-center justify-center text-mc-gold mb-6 group-hover:scale-110 transition-transform">
+                                    <b.icon size={24} />
+                                </div>
+                                <h4 className="text-lg font-bold text-white mb-2">{b.title}</h4>
+                                <p className="text-gray-500 text-sm leading-relaxed">{b.desc}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </section>
             </div>
 
             <ProductModal

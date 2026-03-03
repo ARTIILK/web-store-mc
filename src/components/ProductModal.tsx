@@ -32,7 +32,7 @@ export default function ProductModal({ product, onClose, onAddToCart }: Props) {
                             <img
                                 src={`/preview/${product.image}`}
                                 alt={product.name}
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-contain p-8 transition-transform"
                             />
                             {product.limited && (
                                 <div className="absolute bottom-4 left-4 bg-red-500 px-4 py-2 rounded-lg text-xs font-black uppercase animate-pulse">

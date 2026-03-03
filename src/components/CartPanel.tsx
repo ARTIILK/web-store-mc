@@ -57,7 +57,7 @@ export default function CartPanel() {
                                             <img
                                                 src={`/preview/${item.image}`}
                                                 alt={item.name}
-                                                className="w-20 h-20 object-cover rounded-lg"
+                                                className="w-20 h-20 object-contain bg-black/20 rounded-lg p-1"
                                             />
                                             <div className="flex-grow">
                                                 <div className="flex justify-between mb-1">

@@ -8,10 +8,13 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
 
-  const navLinks = categories.map(cat => ({
-    name: cat.charAt(0).toUpperCase() + cat.slice(1),
-    href: `#${cat.toLowerCase()}`
-  }));
+  const navLinks = [
+    ...categories.map(cat => ({
+      name: cat.charAt(0).toUpperCase() + cat.slice(1),
+      href: `#${cat.toLowerCase()}`
+    })),
+    { name: 'Coins', href: '#coins' }
+  ];
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();

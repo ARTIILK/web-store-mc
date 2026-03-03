@@ -18,7 +18,7 @@ export default function ProductCard({ product, onSelect }: Props) {
                 <img
                     src={`/preview/${product.image}`}
                     alt={product.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-110"
                 />
                 {product.badge && (
                     <div className="absolute top-3 right-3 bg-mc-orange px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest neon-glow">
