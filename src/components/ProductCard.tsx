@@ -11,7 +11,7 @@ export default function ProductCard({ product, onSelect }: Props) {
     return (
         <motion.div
             whileHover={{ y: -5 }}
-            className="glass-card rounded-2xl overflow-hidden flex flex-col group cursor-pointer"
+            className="glass-card rounded-2xl overflow-hidden flex flex-col group cursor-pointer enchanted-glint"
             onClick={() => onSelect(product)}
         >
             <div className="relative h-48 bg-mc-brown/30 overflow-hidden">
@@ -52,7 +52,7 @@ export default function ProductCard({ product, onSelect }: Props) {
                         <span className="text-gray-500 text-xs ml-1 font-bold">INR</span>
                     </div>
                     <button
-                        className="p-2 bg-mc-gold/20 hover:bg-mc-gold text-mc-gold hover:text-mc-dark rounded-lg transition-all"
+                        className="p-2 bg-mc-gold/20 hover:bg-mc-gold text-mc-gold hover:text-mc-dark rounded-lg transition-all enchanted-glint"
                         onClick={(e) => {
                             e.stopPropagation();
                             onSelect(product);

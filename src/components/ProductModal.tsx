@@ -79,7 +79,7 @@ export default function ProductModal({ product, onClose, onAddToCart }: Props) {
                                         onAddToCart(product);
                                         onClose();
                                     }}
-                                    className="flex-grow py-4 bg-gradient-to-r from-mc-gold to-mc-orange text-mc-dark font-black rounded-xl hover:shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all flex items-center justify-center gap-2"
+                                    className="flex-grow py-4 bg-gradient-to-r from-mc-gold to-mc-orange text-mc-dark font-black rounded-xl hover:shadow-[0_0_30px_rgba(192,132,252,0.4)] transition-all flex items-center justify-center gap-2 enchanted-glint neon-glow"
                                 >
                                     <ShoppingCart size={20} />
                                     Claim Package

@@ -2,16 +2,19 @@ import { StoreProvider } from './context/StoreContext';
 import Navbar from './components/Navbar';
 import CartPanel from './components/CartPanel';
 import Store from './pages/Store';
+import Scene3D from './components/Scene3D';
 
 function App() {
   return (
     <StoreProvider>
-      <div className="min-h-screen bg-mc-dark text-white selection:bg-mc-gold selection:text-mc-dark">
-        {/* Decorative Ambient Background */}
-        <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-          <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-mc-gold/10 rounded-full blur-[160px] opacity-40" />
-          <div className="absolute bottom-[5%] right-[-5%] w-[40%] h-[40%] bg-mc-orange/10 rounded-full blur-[160px] opacity-40" />
-          <div className="absolute top-[30%] right-[10%] w-[30%] h-[30%] bg-blue-500/5 rounded-full blur-[140px] opacity-20" />
+      <div className="min-h-screen bg-mc-dark text-white selection:bg-mc-enchant/30">
+        {/* 3D Dynamic Background */}
+        <Scene3D />
+
+        {/* Decorative Ambient Background Overlay */}
+        <div className="fixed inset-0 pointer-events-none overflow-hidden z-[1]">
+          <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-mc-gold/5 rounded-full blur-[160px] opacity-20" />
+          <div className="absolute bottom-[5%] right-[-5%] w-[40%] h-[40%] bg-mc-enchant/5 rounded-full blur-[160px] opacity-20" />
         </div>
 
         <div className="relative z-10 flex flex-col min-h-screen">
