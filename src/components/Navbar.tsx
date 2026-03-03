@@ -1,17 +1,15 @@
 import { Link, useLocation } from 'react-router-dom';
-import { ShoppingCart, Menu, X, User, Crown, Package, Zap, Home, Settings } from 'lucide-react';
+import { ShoppingCart, Menu, X, User, Crown, Zap, Home, Settings } from 'lucide-react';
 import { useState } from 'react';
 import { useCartStore, useUserStore } from '../store';
 import { cn } from '../utils/cn';
 import { motion, AnimatePresence } from 'motion/react';
 import CurrencyToggle from './CurrencyToggle';
-import woodmcLogo from '../logo/woodmc.png';
 
 const navLinks = [
   { name: 'Home', path: '/', icon: Home },
   { name: 'Ranks', path: '/ranks', icon: Crown },
-  { name: 'Kits', path: '/kits', icon: Package },
-  { name: 'Offers', path: '/offers', icon: Zap },
+  { name: 'Special Packages', path: '/offers', icon: Zap },
 ];
 
 export default function Navbar() {
@@ -29,7 +27,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <img 
-              src={woodmcLogo} 
+              src="/src/logo/woodmc.png" 
               alt="WoodMC Logo" 
               className="h-10 w-auto transition-all duration-300 group-hover:scale-110"
             />

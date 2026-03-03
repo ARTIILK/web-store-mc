@@ -4,10 +4,7 @@ import { DollarSign, ChevronDown } from 'lucide-react';
 import { useCurrencyStore, Currency } from '../store';
 
 const currencies: { code: Currency; name: string; symbol: string }[] = [
-  { code: 'USD', name: 'US Dollar', symbol: '$' },
-  { code: 'EUR', name: 'Euro', symbol: '€' },
   { code: 'INR', name: 'Indian Rupee', symbol: '₹' },
-  { code: 'DRM', name: 'Dram', symbol: 'Ð' },
 ];
 
 export default function CurrencyToggle() {

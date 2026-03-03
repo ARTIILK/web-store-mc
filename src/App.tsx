@@ -12,7 +12,6 @@ import ParticlesBackground from './components/ParticlesBackground';
 // Pages
 import Home from './pages/Home';
 import Ranks from './pages/Ranks';
-import Kits from './pages/Kits';
 import Offers from './pages/Offers';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
@@ -38,7 +37,6 @@ export default function App() {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/ranks" element={<Ranks />} />
-                  <Route path="/kits" element={<Kits />} />
                   <Route path="/offers" element={<Offers />} />
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/login" element={<Login />} />

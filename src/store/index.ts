@@ -79,7 +79,7 @@ interface CurrencyState {
 }
 
 export const useCurrencyStore = create<CurrencyState>((set, get) => ({
-  currency: 'USD',
+  currency: 'INR',
   setCurrency: (currency) => set({ currency }),
   convertPrice: (priceInUSD) => {
     const exchangeRate = ExchangeRates[get().currency];

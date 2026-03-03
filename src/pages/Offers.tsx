@@ -1,196 +1,210 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
-import { Clock, Zap, Gift, ArrowRight, ShoppingCart, Crown, Check } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { X, ArrowRight, Check, ShoppingCart } from 'lucide-react';
 import { useCartStore } from '../store';
 import { cn } from '../utils/cn';
 
-const offers = [
-  {
-    id: 'offer_winter',
-    name: 'Winter Bundle',
-    originalPrice: 49.99,
-    price: 34.99,
-    discount: 30,
-    endTime: new Date(Date.now() + 86400000 * 3).getTime(), // 3 days from now
-    color: 'from-blue-500 to-cyan-400',
-    icon: Gift,
-    description: 'Get the MVP rank, 5x Mythic Crates, and exclusive Winter cosmetics.',
-    items: ['MVP+ Rank (Lifetime)', '5x Mythic Crates', 'Winter Aura Cosmetic', 'Snowman Pet']
-  },
-  {
-    id: 'offer_starter',
-    name: 'Starter Pack',
-    originalPrice: 19.99,
-    price: 9.99,
-    discount: 50,
-    endTime: new Date(Date.now() + 86400000 * 1).getTime(), // 1 day from now
-    color: 'from-green-500 to-emerald-400',
-    icon: Zap,
-    description: 'Everything you need to start your journey on WinterMC.',
-    items: ['VIP Rank (30 Days)', 'Starter Kit', '10,000 In-game Money', '3x Rare Crates']
-  },
-  {
-    id: 'offer_god',
-    name: 'God Tier Bundle',
-    originalPrice: 99.99,
-    price: 79.99,
-    discount: 20,
-    endTime: new Date(Date.now() + 86400000 * 7).getTime(), // 7 days from now
-    color: 'from-purple-600 to-pink-500',
-    icon: Crown,
-    description: 'The ultimate package for the most dedicated players.',
-    items: ['Legend Rank (Lifetime)', 'God Kit', '10x Mythic Crates', 'Exclusive "God" Title', 'Custom Join Message']
-  }
-];
+const specialPackage = {
+  id: 'special_package',
+  name: 'Special Package',
+  price: 200.00,
+  currency: 'INR',
+  warning: 'Removing In Some Time!',
+  description: 'The ultimate package for dedicated players',
+  image: '/src/preview/kit-preview-2.png',
+  items: [
+    'Titan Rank (Lifetime)',
+    '3000 Coins',
+    'Exclusive Bonuses'
+  ]
+};
 
 export default function Offers() {
   const { addItem, toggleCart } = useCartStore();
-  const [now, setNow] = useState(Date.now());
+  const [selectedPackage, setSelectedPackage] = useState(false);
 
-  useEffect(() => {
-    const interval = setInterval(() => setNow(Date.now()), 1000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const handleAddToCart = (offer: typeof offers[0]) => {
+  const handleBuyNow = () => {
     addItem({
-      id: offer.id,
-      name: offer.name,
-      price: offer.price,
-      type: 'offer'
+      id: specialPackage.id,
+      name: specialPackage.name,
+      price: specialPackage.price,
+      type: 'offer',
+      image: specialPackage.image
     });
     toggleCart();
-  };
-
-  const formatTime = (ms: number) => {
-    if (ms <= 0) return 'Expired';
-    const days = Math.floor(ms / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((ms % (1000 * 60)) / 1000);
-    return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    setSelectedPackage(false);
   };
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="text-center mb-16">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-mc-orange/20 border border-mc-orange/50 text-mc-orange text-sm font-bold uppercase tracking-wider mb-6 animate-pulse"
-        >
-          <Zap size={16} />
-          Limited Time Offers
-        </motion.div>
         <motion.h1 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
           className="text-4xl md:text-5xl font-display font-black text-white mb-4"
         >
-          Special <span className="text-gradient">Deals</span>
+          Special <span className="text-gradient">Packages</span>
         </motion.h1>
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
+          transition={{ delay: 0.1 }}
           className="text-gray-400 max-w-2xl mx-auto text-lg"
         >
-          Grab these exclusive bundles before they're gone! Massive discounts on ranks, crates, and cosmetics.
+          Exclusive bundles with incredible value. All prices in INR.
         </motion.p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {offers.map((offer, index) => {
-          const timeLeft = offer.endTime - now;
-          const isExpired = timeLeft <= 0;
-          const Icon = offer.icon;
+      {/* Special Package Card */}
+      <div className="max-w-2xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          whileHover={{ y: -5 }}
+          className="glass-card rounded-3xl overflow-hidden border border-mc-gold/50 hover:border-mc-gold transition-all duration-300 shadow-[0_0_30px_rgba(245,158,11,0.1)]"
+        >
+          {/* Image Container */}
+          <div className="relative h-96 bg-mc-dark overflow-hidden">
+            <img 
+              src={specialPackage.image}
+              alt={specialPackage.name}
+              className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+            />
+            
+            {/* Warning Badge */}
+            <div className="absolute top-4 right-4 px-4 py-2 rounded-lg bg-red-500/90 text-white font-bold text-sm animate-pulse">
+              {specialPackage.warning}
+            </div>
+          </div>
 
-          return (
-            <motion.div
-              key={offer.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -10 }}
-              className={cn(
-                "glass-card rounded-3xl p-8 relative flex flex-col h-full border-2 transition-all duration-300 overflow-hidden group",
-                isExpired ? "opacity-50 grayscale border-white/5" : "border-mc-orange/30 hover:border-mc-orange/60 shadow-[0_0_20px_rgba(234,88,12,0.1)]"
-              )}
-            >
-              {/* Discount Badge */}
-              {!isExpired && (
-                <div className="absolute top-4 right-4 w-16 h-16 bg-mc-orange rounded-full flex items-center justify-center text-white font-black text-xl shadow-lg transform rotate-12 group-hover:scale-110 transition-transform">
-                  -{offer.discount}%
-                </div>
-              )}
+          {/* Content Container */}
+          <div className="p-8 md:p-12">
+            <div className="mb-8">
+              <h2 className="text-4xl font-display font-black text-white mb-2">{specialPackage.name}</h2>
+              <p className="text-gray-400 text-lg">{specialPackage.description}</p>
+            </div>
 
-              {/* Background Glow */}
-              <div className={cn(
-                "absolute top-0 left-0 w-full h-32 opacity-20 blur-3xl rounded-full -translate-y-1/2 transition-opacity group-hover:opacity-40",
-                isExpired ? "bg-gray-500" : `bg-gradient-to-r ${offer.color}`
-              )} />
-
-              <div className="relative z-10 mb-6">
-                <div className={cn(
-                  "w-16 h-16 rounded-2xl flex items-center justify-center mb-4 shadow-lg",
-                  isExpired ? "bg-gray-700" : `bg-gradient-to-br ${offer.color}`
-                )}>
-                  <Icon size={32} className="text-white" />
-                </div>
-                <h2 className="text-3xl font-display font-bold text-white mb-2">{offer.name}</h2>
-                <p className="text-gray-400 text-sm">{offer.description}</p>
-              </div>
-
-              {/* Timer */}
-              <div className="mb-6 bg-mc-dark/50 rounded-xl p-4 border border-white/5 flex items-center justify-center gap-3">
-                <Clock size={20} className={isExpired ? "text-gray-500" : "text-mc-orange animate-pulse"} />
-                <span className={cn(
-                  "font-mono font-bold text-lg tracking-wider",
-                  isExpired ? "text-gray-500" : "text-mc-orange"
-                )}>
-                  {formatTime(timeLeft)}
-                </span>
-              </div>
-
-              {/* Items List */}
-              <div className="flex-grow space-y-3 mb-8">
-                <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2">Bundle Includes</h4>
-                {offer.items.map((item, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <div className="mt-1 bg-white/10 rounded-full p-0.5">
-                      <Check size={12} className="text-white" />
-                    </div>
-                    <span className="text-gray-300 text-sm">{item}</span>
-                  </div>
+            {/* Package Contents */}
+            <div className="mb-8 p-6 bg-mc-dark/50 rounded-xl border border-white/10">
+              <h3 className="text-lg font-bold text-white mb-4">Package Includes:</h3>
+              <ul className="space-y-3">
+                {specialPackage.items.map((item, i) => (
+                  <li key={i} className="flex items-center gap-3 text-gray-300">
+                    <span className="text-mc-gold text-xl">✓</span>
+                    <span className="text-lg font-medium">{item}</span>
+                  </li>
                 ))}
+              </ul>
+            </div>
+
+            {/* Price and Button */}
+            <div className="flex flex-col sm:flex-row items-center sm:items-end justify-between gap-6">
+              <div>
+                <span className="text-gray-500 text-sm">Price</span>
+                <div className="text-5xl font-black text-mc-gold">
+                  ₹{specialPackage.price.toFixed(2)}
+                </div>
               </div>
 
-              {/* Pricing & Action */}
-              <div className="mt-auto pt-6 border-t border-white/10 flex items-center justify-between">
-                <div className="flex flex-col">
-                  <span className="text-sm text-gray-500 line-through font-medium">${offer.originalPrice.toFixed(2)}</span>
-                  <span className="text-3xl font-black text-white">${offer.price.toFixed(2)}</span>
-                </div>
-                
-                <button
-                  onClick={() => !isExpired && handleAddToCart(offer)}
-                  disabled={isExpired}
-                  className={cn(
-                    "px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-all duration-300",
-                    isExpired 
-                      ? "bg-gray-700 text-gray-400 cursor-not-allowed" 
-                      : "bg-mc-orange hover:bg-mc-orange/80 text-white shadow-lg hover:shadow-mc-orange/50 hover:scale-105"
-                  )}
-                >
-                  <ShoppingCart size={18} />
-                  {isExpired ? 'Ended' : 'Add to Cart'}
-                </button>
-              </div>
-            </motion.div>
-          );
-        })}
+              <button
+                onClick={() => setSelectedPackage(true)}
+                className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-mc-gold to-mc-orange text-mc-dark font-bold rounded-xl hover:shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all duration-300 flex items-center justify-center gap-2 text-lg"
+              >
+                <ShoppingCart size={20} />
+                More Info
+              </button>
+            </div>
+          </div>
+        </motion.div>
       </div>
+
+      {/* Package Details Modal */}
+      <AnimatePresence>
+        {selectedPackage && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedPackage(false)}
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                onClick={(e) => e.stopPropagation()}
+                className="bg-mc-dark border border-white/10 rounded-3xl max-w-2xl w-full shadow-2xl relative overflow-hidden"
+              >
+                {/* Close Button */}
+                <button
+                  onClick={() => setSelectedPackage(false)}
+                  className="absolute top-6 right-6 p-2 rounded-full bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-colors z-20"
+                >
+                  <X size={24} />
+                </button>
+
+                {/* Modal Content */}
+                <div className="grid grid-cols-1 md:grid-cols-2">
+                  {/* Left - Image */}
+                  <div className="h-96 md:h-auto bg-mc-brown/50 overflow-hidden flex items-center justify-center p-6">
+                    <img 
+                      src={specialPackage.image}
+                      alt={specialPackage.name}
+                      className="w-full h-full object-cover rounded-lg"
+                    />
+                  </div>
+
+                  {/* Right - Details */}
+                  <div className="p-8 flex flex-col justify-between">
+                    <div>
+                      <h2 className="text-3xl font-bold text-white mb-2">{specialPackage.name}</h2>
+                      <p className="text-mc-orange font-bold text-lg mb-6">{specialPackage.warning}</p>
+                      <p className="text-gray-400 mb-6">{specialPackage.description}</p>
+
+                      {/* Features */}
+                      <h4 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">What You Get</h4>
+                      <ul className="space-y-3 mb-8">
+                        {specialPackage.items.map((item, i) => (
+                          <li key={i} className="flex items-start gap-3 text-gray-300">
+                            <span className="text-mc-gold mt-1">✓</span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      {/* Price */}
+                      <div className="mb-8 pt-6 border-t border-white/10">
+                        <span className="text-gray-500 text-sm">Price</span>
+                        <div className="text-4xl font-black text-mc-gold">
+                          ₹{specialPackage.price.toFixed(2)}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="space-y-3">
+                      <button
+                        onClick={handleBuyNow}
+                        className="w-full py-4 bg-gradient-to-r from-mc-gold to-mc-orange text-mc-dark font-bold rounded-lg hover:shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all duration-300 flex items-center justify-center gap-2 text-lg"
+                      >
+                        <ShoppingCart size={20} />
+                        Buy Now
+                      </button>
+                      <button
+                        onClick={() => setSelectedPackage(false)}
+                        className="w-full py-3 bg-white/10 text-white font-medium rounded-lg hover:bg-white/20 transition-colors"
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

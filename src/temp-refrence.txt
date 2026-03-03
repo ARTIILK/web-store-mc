@@ -1,0 +1,349 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="dns-prefetch" href="https://cdn.craftingstore.net">
+    <link rel="icon" href="">
+    <title>WoodMC | Ranks</title>
+
+    <link rel="stylesheet" href="https://cdn.craftingstore.net/assets/shops/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.craftingstore.net/assets/shops/css/themes/flatly.min.css">
+    <link rel="stylesheet" href="https://cdn.craftingstore.net/assets/shops/css/store.min.css">
+    <link rel="stylesheet" href="/assets/7505d64a54e061b7acd54ccd58b49dc43500b635-css/style.css?v=1772513457">
+</head>
+
+<body >
+
+<!-- container -->
+<div class="container">
+
+    <!-- header -->
+    <div class="header">
+    <div class="logo">
+        <a href="/"><img height="100px" width="auto" src="https://cdn.craftingstore.net/assets/shops/img/logo/logo-trans-space.png"></a>
+    </div>
+</div>
+    <!-- nav -->
+    <nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                                                                                        <li><a href="/category/531286">Ranks</a></li>
+                            
+                                                                                                            <li><a href="/category/531289">Coins</a></li>
+                            
+                                                                                                            <li><a href="/category/531405">Special Packages</a></li>
+                            
+                                    				            </ul>
+						 <ul class="nav navbar-nav navbar-right">
+                <li><a href="/checkout/basket">Shopping basket</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <!-- content -->
+    <div class="row">
+        <div class="col-lg-12 col-xs-12">
+
+            
+            <div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                                <div class="row">
+                    <div class="col-md-12">
+                        <p><strong>Purchase Ranks Here!</strong></p>
+                        <hr>
+                    </div>
+                </div>
+                
+                
+                                <div class="row">
+                                        <div class="col-md-4">
+                        <div class="panel panel-default item-wrapper">
+                            <div class="panel-body">
+                                                                <img class="img-responsive" src="https://cdn.craftingstore.net/rPPmDHlLQ1/c34a6b31d8bbe8c86951f382137420ab/dizzgrmzw0bn3bidvcej.png"><br/>
+                                                                <div class="item-footer">
+                                    <div class="row">
+                                        <div class="col-md-6"><b>Hero Rank</b><br>
+                                                                                        50.00
+                                                                                        INR
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <button type="button" class="btn btn-primary btn-xs"
+                                                    data-toggle="modal"
+                                                    data-target="#package1517010">
+                                                More info
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="col-md-4">
+                        <div class="panel panel-default item-wrapper">
+                            <div class="panel-body">
+                                                                <img class="img-responsive" src="https://cdn.craftingstore.net/rPPmDHlLQ1/c34a6b31d8bbe8c86951f382137420ab/o1jgfvlkew4wifijupvf.png"><br/>
+                                                                <div class="item-footer">
+                                    <div class="row">
+                                        <div class="col-md-6"><b>Jerry</b><br>
+                                                                                        100.00
+                                                                                        INR
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <button type="button" class="btn btn-primary btn-xs"
+                                                    data-toggle="modal"
+                                                    data-target="#package1517013">
+                                                More info
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="col-md-4">
+                        <div class="panel panel-default item-wrapper">
+                            <div class="panel-body">
+                                                                <img class="img-responsive" src="https://cdn.craftingstore.net/rPPmDHlLQ1/c34a6b31d8bbe8c86951f382137420ab/jmwo4h7xjp15y6lp4ghb.png"><br/>
+                                                                <div class="item-footer">
+                                    <div class="row">
+                                        <div class="col-md-6"><b>Lion</b><br>
+                                                                                        150.00
+                                                                                        INR
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <button type="button" class="btn btn-primary btn-xs"
+                                                    data-toggle="modal"
+                                                    data-target="#package1517016">
+                                                More info
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                    </div>
+                                <div class="row">
+                                        <div class="col-md-4">
+                        <div class="panel panel-default item-wrapper">
+                            <div class="panel-body">
+                                                                <img class="img-responsive" src="https://cdn.craftingstore.net/rPPmDHlLQ1/c34a6b31d8bbe8c86951f382137420ab/o1jgfvlkew4wifijupvf.png"><br/>
+                                                                <div class="item-footer">
+                                    <div class="row">
+                                        <div class="col-md-6"><b>Titan</b><br>
+                                                                                        200.00
+                                                                                        INR
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <button type="button" class="btn btn-primary btn-xs"
+                                                    data-toggle="modal"
+                                                    data-target="#package1517017">
+                                                More info
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="col-md-4">
+                        <div class="panel panel-default item-wrapper">
+                            <div class="panel-body">
+                                                                <img class="img-responsive" src="https://cdn.craftingstore.net/rPPmDHlLQ1/c34a6b31d8bbe8c86951f382137420ab/o1jgfvlkew4wifijupvf.png"><br/>
+                                                                <div class="item-footer">
+                                    <div class="row">
+                                        <div class="col-md-6"><b>Wood+</b><br>
+                                                                                        250.00
+                                                                                        INR
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <button type="button" class="btn btn-primary btn-xs"
+                                                    data-toggle="modal"
+                                                    data-target="#package1517019">
+                                                More info
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                    </div>
+                                            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="package1517010" tabindex="-1" role="dialog"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">Hero Rank</h4>
+            </div>
+            <div class="modal-body">
+                <p><p><strong>Includes -<br>Protection 3 Armor<br>Sharpness 4 Sword And Axe<br>Efficiency 4 Pickaxe</strong><u><strong><br><br></strong></u></p></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Close
+                </button>
+                                <a href="/package/1517010">
+                    <button type="button"
+                            class="btn btn-primary">Buy now
+                    </button>
+                </a>
+		                            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="package1517013" tabindex="-1" role="dialog"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">Jerry</h4>
+            </div>
+            <div class="modal-body">
+                <p><p><strong>Protection 4 Armor<br>Sharpness 4 Sword And Axe<br>Efficiency 4 Pickaxe<u><br><br></u></strong></p></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Close
+                </button>
+                                <a href="/package/1517013">
+                    <button type="button"
+                            class="btn btn-primary">Buy now
+                    </button>
+                </a>
+		                            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="package1517016" tabindex="-1" role="dialog"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">Lion</h4>
+            </div>
+            <div class="modal-body">
+                <p><p><strong>Protection 4 Armor<br>Blast Protection 4 Armor<br>Sharpness 5 Sword And Axe<br>Efficiency 5 Pickaxe<u><br><br></u></strong></p></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Close
+                </button>
+                                <a href="/package/1517016">
+                    <button type="button"
+                            class="btn btn-primary">Buy now
+                    </button>
+                </a>
+		                            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="package1517017" tabindex="-1" role="dialog"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">Titan</h4>
+            </div>
+            <div class="modal-body">
+                <p><p><strong>Protection 4 Armor<br>Blast Protection 4 Armor<br>Sharpness 5 Sword And Axe<br>Efficiency 5 Pickaxe<u><br><br></u></strong></p></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Close
+                </button>
+                                <a href="/package/1517017">
+                    <button type="button"
+                            class="btn btn-primary">Buy now
+                    </button>
+                </a>
+		                            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="package1517019" tabindex="-1" role="dialog"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title">Wood+</h4>
+            </div>
+            <div class="modal-body">
+                <p><p><strong>All Protection 4 On Armor<br>Sharpness 5 And Smite 5&nbsp;Sword<br>Efficiency 5 Axe And&nbsp;Pickaxe<br>Free 1000 Coins With Shogun + Rank<u><br><br></u></strong></p></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Close
+                </button>
+                                <a href="/package/1517019">
+                    <button type="button"
+                            class="btn btn-primary">Buy now
+                    </button>
+                </a>
+		                            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.craftingstore.net/assets/shops/js/jquery.min.js" data-no-instant></script>
+    <script src="https://cdn.craftingstore.net/assets/shops/js/bootstrap.min.js" data-no-instant></script>
+    <script src="https://cdn.craftingstore.net/assets/shops/js/store.js?v=1" data-no-instant></script>
+    <!-- footer -->
+    <footer class="footer">
+    <div class="row">
+	<div class="col-md-6">
+		<p><a href="/legal/terms">Terms</a> | <a href="/legal/privacy">Privacy</a> | <a href="/legal/impressum">Impressum</a></p>
+	</div>
+
+        <div class="col-md-6">
+                        <p class="pull-right">Proudly powered by <a href="https://www.craftingstore.net" target="_black">CraftingStore</a></p>
+                    </div>
+    </div>
+</footer>
+
+</div>
+
+</body>
+</html>
