@@ -1,12 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Copy, Check, Star, Zap, Shield, Crown } from 'lucide-react';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
 import { cn } from '../utils/cn';
+import { useCurrencyStore } from '../store';
+import ArmorPreview from '../components/ArmorPreview';
 
 export default function Home() {
   const [copied, setCopied] = useState(false);
-  const serverIp = "play.wintermc.net";
+  const { formatPrice } = useCurrencyStore();
+  const serverIp = "play.woodmc.net";
 
   const handleCopyIp = () => {
     navigator.clipboard.writeText(serverIp);
@@ -24,10 +29,10 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-mc-brown/80 border border-mc-gold/30 text-mc-gold text-sm font-medium mb-8"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-wood-dark/80 border border-wood-accent/30 text-wood-light text-sm font-medium mb-8"
             >
-              <Star size={16} className="text-mc-gold" />
-              <span>Winter Season 2026 is LIVE!</span>
+              <Star size={16} className="text-wood-accent" />
+              <span>WoodMC Season 2026 is LIVE!</span>
             </motion.div>
 
             <motion.h1
@@ -46,7 +51,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed"
             >
-              Enhance your WinterMC experience with premium ranks, exclusive kits, and special crates. Join thousands of players in the ultimate survival adventure.
+              Enhance your WoodMC experience with premium ranks, exclusive kits, and special crates. Join thousands of players in the ultimate survival adventure.
             </motion.p>
 
             <motion.div
@@ -98,7 +103,96 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Items Section */}
+      {/* Armor Showcase Section */}
+      <section className="py-20 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <motion.h2
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-3xl md:text-4xl font-display font-bold text-white mb-4"
+            >
+              Premium <span className="text-gradient">Gear Showcase</span>
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-gray-400 max-w-2xl mx-auto"
+            >
+              Explore the incredible armor sets and weapons available in our exclusive kits
+            </motion.p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { name: 'Iron Kit', type: 'iron', color: '#a8a8a8', enchanted: false, price: 4.99 },
+              { name: 'Diamond Kit', type: 'diamond', color: '#33ebcb', enchanted: false, price: 14.99 },
+              { name: 'God Kit', type: 'netherite', color: '#443a3b', enchanted: true, price: 29.99 }
+            ].map((kit, idx) => (
+              <motion.div
+                key={kit.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.15 }}
+                className="glass-card rounded-2xl overflow-hidden border border-white/10 hover:border-white/30 transition-all duration-300 group"
+              >
+                {/* 3D Preview */}
+                <div className="h-64 w-full bg-gradient-to-b from-mc-dark to-mc-brown/50 relative">
+                  <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
+                    <Suspense fallback={null}>
+                      <ArmorPreview 
+                        color={kit.color} 
+                        enchanted={kit.enchanted}
+                        armorType={kit.type as any}
+                      />
+                      <OrbitControls 
+                        enablePan={false} 
+                        minDistance={3} 
+                        maxDistance={8}
+                        autoRotate
+                        autoRotateSpeed={2}
+                      />
+                    </Suspense>
+                  </Canvas>
+                  
+                  {kit.enchanted && (
+                    <div className="absolute top-4 right-4 px-2 py-1 rounded-full bg-purple-500/20 border border-purple-500/50 text-purple-300 text-xs font-bold uppercase tracking-wider flex items-center gap-1">
+                      <Zap size={10} /> Enchanted
+                    </div>
+                  )}
+                </div>
+
+                {/* Kit Info */}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text" style={{
+                    backgroundImage: kit.enchanted ? 'none' : `linear-gradient(to right, ${kit.color}, ${kit.color})`,
+                  }}>
+                    {kit.name}
+                  </h3>
+                  <p className="text-gray-400 text-sm mb-4">
+                    {kit.enchanted ? 'Fully enchanted netherite gear' : 'Premium armor and tools'}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-lg font-bold" style={{ color: kit.color }}>
+                      {formatPrice(kit.price)}
+                    </span>
+                    <Link
+                      to="/kits"
+                      className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white text-sm font-medium transition-all duration-300"
+                    >
+                      View Kit
+                    </Link>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
       <section className="py-20 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-12">

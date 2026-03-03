@@ -1,9 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
-import { ShoppingCart, Menu, X, User, Crown, Package, Zap, Home } from 'lucide-react';
+import { ShoppingCart, Menu, X, User, Crown, Package, Zap, Home, Settings } from 'lucide-react';
 import { useState } from 'react';
 import { useCartStore, useUserStore } from '../store';
 import { cn } from '../utils/cn';
 import { motion, AnimatePresence } from 'motion/react';
+import CurrencyToggle from './CurrencyToggle';
+import woodmcLogo from '../logo/woodmc.png';
 
 const navLinks = [
   { name: 'Home', path: '/', icon: Home },
@@ -26,11 +28,13 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-mc-gold to-mc-orange flex items-center justify-center neon-glow-hover transition-all duration-300">
-              <span className="font-display font-bold text-xl text-mc-dark">WM</span>
-            </div>
-            <span className="font-display font-bold text-xl tracking-wider text-white group-hover:text-mc-gold transition-colors">
-              WINTER<span className="text-mc-orange">MC</span>
+            <img 
+              src={woodmcLogo} 
+              alt="WoodMC Logo" 
+              className="h-10 w-auto transition-all duration-300 group-hover:scale-110"
+            />
+            <span className="hidden sm:block font-display font-bold text-lg tracking-wider text-white group-hover:text-wood-light transition-colors">
+              WOOD<span className="text-wood-accent">MC</span>
             </span>
           </Link>
 
@@ -56,14 +60,21 @@ export default function Navbar() {
           </div>
 
           {/* Actions */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-4">
+            <CurrencyToggle />
+            
             {username ? (
-              <Link to="/dashboard" className="flex items-center gap-2 text-sm font-medium text-gray-300 hover:text-white transition-colors">
-                <div className="w-8 h-8 rounded-full bg-mc-brown border border-mc-gold/30 flex items-center justify-center overflow-hidden">
-                  <img src={`https://minotar.net/helm/${username}/32.png`} alt={username} className="w-full h-full object-cover" />
-                </div>
-                {username}
-              </Link>
+              <>
+                <Link to="/admin" className="p-2 text-gray-300 hover:text-yellow-500 transition-colors" title="Admin Panel">
+                  <Settings size={20} />
+                </Link>
+                <Link to="/dashboard" className="flex items-center gap-2 text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                  <div className="w-8 h-8 rounded-full bg-mc-brown border border-mc-gold/30 flex items-center justify-center overflow-hidden">
+                    <img src={`https://minotar.net/helm/${username}/32.png`} alt={username} className="w-full h-full object-cover" />
+                  </div>
+                  {username}
+                </Link>
+              </>
             ) : (
               <Link to="/login" className="flex items-center gap-2 text-sm font-medium text-gray-300 hover:text-white transition-colors">
                 <User size={18} />

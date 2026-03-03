@@ -9,6 +9,22 @@ export type CartItem = {
   type: 'rank' | 'kit' | 'crate' | 'offer';
 };
 
+export type Currency = 'USD' | 'EUR' | 'INR' | 'DRM';
+
+enum ExchangeRates {
+  USD = 1,
+  EUR = 0.92,
+  INR = 83.12,
+  DRM = 3.67,
+}
+
+enum CurrencySymbols {
+  USD = '$',
+  EUR = '€',
+  INR = '₹',
+  DRM = 'Ð',
+}
+
 interface CartState {
   items: CartItem[];
   isOpen: boolean;
@@ -52,6 +68,28 @@ export const useCartStore = create<CartState>((set, get) => ({
   clearCart: () => set({ items: [] }),
   get total() {
     return get().items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  },
+}));
+
+interface CurrencyState {
+  currency: Currency;
+  setCurrency: (currency: Currency) => void;
+  convertPrice: (priceInUSD: number) => number;
+  formatPrice: (priceInUSD: number) => string;
+}
+
+export const useCurrencyStore = create<CurrencyState>((set, get) => ({
+  currency: 'USD',
+  setCurrency: (currency) => set({ currency }),
+  convertPrice: (priceInUSD) => {
+    const exchangeRate = ExchangeRates[get().currency];
+    return Math.round(priceInUSD * exchangeRate * 100) / 100;
+  },
+  formatPrice: (priceInUSD) => {
+    const currency = get().currency;
+    const convertedPrice = get().convertPrice(priceInUSD);
+    const symbol = CurrencySymbols[currency];
+    return `${symbol} ${convertedPrice.toFixed(2)}`;
   },
 }));
 

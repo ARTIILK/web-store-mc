@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Check, X, Crown, ArrowRight, Shield, Zap } from 'lucide-react';
-import { useCartStore } from '../store';
+import { useCartStore, useCurrencyStore } from '../store';
 import { cn } from '../utils/cn';
 
 const ranks = [
@@ -65,6 +65,7 @@ const ranks = [
 
 export default function Ranks() {
   const { addItem, toggleCart } = useCartStore();
+  const { formatPrice } = useCurrencyStore();
   const [selectedRank, setSelectedRank] = useState<typeof ranks[0] | null>(null);
 
   const handleAddToCart = (rank: typeof ranks[0]) => {
@@ -127,8 +128,7 @@ export default function Ranks() {
                 </div>
                 <h2 className="text-3xl font-display font-bold text-white mb-2">{rank.name}</h2>
                 <div className="flex items-baseline justify-center gap-1">
-                  <span className="text-2xl font-bold text-gray-400">$</span>
-                  <span className={cn("text-5xl font-black", rank.textColor)}>{rank.price}</span>
+                  <span className={cn("text-4xl font-black", rank.textColor)}>{formatPrice(rank.price)}</span>
                   <span className="text-gray-500 font-medium">/lifetime</span>
                 </div>
               </div>

@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import { ShoppingCart, Package, Shield, Sword, Pickaxe, ArrowRight, Zap } from 'lucide-react';
-import { useCartStore } from '../store';
+import { useCartStore, useCurrencyStore } from '../store';
 import { cn } from '../utils/cn';
 import ArmorPreview from '../components/ArmorPreview';
 
@@ -63,6 +63,7 @@ const kits = [
 
 export default function Kits() {
   const { addItem, toggleCart } = useCartStore();
+  const { formatPrice } = useCurrencyStore();
   const [selectedKit, setSelectedKit] = useState(kits[1]); // Default to Pro Kit
 
   const handleAddToCart = (kit: typeof kits[0]) => {
@@ -124,7 +125,7 @@ export default function Kits() {
                   </div>
                   <h3 className="text-xl font-bold text-white">{kit.name}</h3>
                 </div>
-                <span className="text-xl font-bold text-mc-gold">${kit.price}</span>
+                <span className="text-xl font-bold text-mc-gold">{formatPrice(kit.price)}</span>
               </div>
               <p className="text-gray-400 text-sm ml-13">{kit.description}</p>
             </motion.div>
@@ -158,7 +159,11 @@ export default function Kits() {
 
                 <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
                   <Suspense fallback={null}>
-                    <ArmorPreview color={selectedKit.color} enchanted={selectedKit.enchanted} />
+                    <ArmorPreview 
+                      color={selectedKit.color} 
+                      enchanted={selectedKit.enchanted}
+                      armorType={'diamond'}
+                    />
                     <OrbitControls 
                       enablePan={false} 
                       minDistance={3} 

@@ -8,6 +8,13 @@
   --color-mc-accent: #fbbf24;
   --color-mc-glow: rgba(245, 158, 11, 0.4);
   
+  /* Wood-themed colors */
+  --color-wood-dark: #1a0f08;
+  --color-wood-brown: #3d2817;
+  --color-wood-light: #d4a574;
+  --color-wood-accent: #c17a3d;
+  --color-wood-gold: #e8b360;
+  
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-display: 'Outfit', 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;

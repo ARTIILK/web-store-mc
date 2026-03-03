@@ -1,10 +1,11 @@
 import { X, Trash2, ShoppingBag, ArrowRight, Shield } from 'lucide-react';
-import { useCartStore } from '../store';
+import { useCartStore, useCurrencyStore } from '../store';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../utils/cn';
 
 export default function CartSidebar() {
   const { items, isOpen, toggleCart, removeItem, updateQuantity, total } = useCartStore();
+  const { formatPrice } = useCurrencyStore();
 
   return (
     <AnimatePresence>
@@ -83,7 +84,7 @@ export default function CartSidebar() {
                         </button>
                       </div>
                       
-                      <p className="text-mc-gold font-bold">${item.price.toFixed(2)}</p>
+                      <p className="text-mc-gold font-bold">{formatPrice(item.price)}</p>
                       
                       <div className="flex items-center gap-3 mt-2">
                         <div className="flex items-center bg-mc-dark rounded-lg border border-white/10 overflow-hidden">
@@ -115,7 +116,7 @@ export default function CartSidebar() {
               <div className="p-6 border-t border-white/10 glass-panel space-y-4">
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-gray-400 font-medium">Subtotal</span>
-                  <span className="text-2xl font-display font-bold text-white">${total.toFixed(2)}</span>
+                  <span className="text-2xl font-display font-bold text-white">{formatPrice(total)}</span>
                 </div>
                 
                 <div className="relative">
