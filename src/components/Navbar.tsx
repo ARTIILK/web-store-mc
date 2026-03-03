@@ -61,7 +61,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center space-x-4">
             <CurrencyToggle />
             
-            {username ? (
+            {username && (
               <>
                 <Link to="/admin" className="p-2 text-gray-300 hover:text-yellow-500 transition-colors" title="Admin Panel">
                   <Settings size={20} />
@@ -73,11 +73,6 @@ export default function Navbar() {
                   {username}
                 </Link>
               </>
-            ) : (
-              <Link to="/login" className="flex items-center gap-2 text-sm font-medium text-gray-300 hover:text-white transition-colors">
-                <User size={18} />
-                Login
-              </Link>
             )}
 
             <button

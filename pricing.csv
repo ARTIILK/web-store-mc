@@ -1,0 +1,7 @@
+id,name,price,image
+kit_hero,Hero Rank,50,/src/preview/hero.png
+kit_jerry,Jerry,100,/src/preview/jerry.png
+kit_lion,Lion,150,/src/preview/lion.png
+kit_titan,Titan,200,/src/preview/titan.png
+kit_woodplus,Wood+,250,/src/preview/wood.png
+special_package,Special Package,200,/src/preview/wood.png

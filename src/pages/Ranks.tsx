@@ -11,7 +11,7 @@ export const kits = [
     price: 50.00,
     currency: 'INR',
     description: 'Start your journey as a Hero',
-    image: '/src/preview/kit-preview-1.png',
+    image: '/src/preview/hero.png',
     features: [
       'Protection 3 Armor',
       'Sharpness 4 Sword And Axe',
@@ -24,7 +24,7 @@ export const kits = [
     price: 100.00,
     currency: 'INR',
     description: 'Unlock Jerry tier powers',
-    image: '/src/preview/kit-preview-1.png',
+    image: '/src/preview/jerry.png',
     features: [
       'Protection 4 Armor',
       'Sharpness 4 Sword And Axe',
@@ -37,7 +37,7 @@ export const kits = [
     price: 150.00,
     currency: 'INR',
     description: 'Roar with Lion rank power',
-    image: '/src/preview/kit-preview-2.png',
+    image: '/src/preview/lion.png',
     features: [
       'Protection 4 Armor',
       'Blast Protection 4 Armor',
@@ -51,7 +51,7 @@ export const kits = [
     price: 200.00,
     currency: 'INR',
     description: 'Become an unstoppable Titan',
-    image: '/src/preview/kit-preview-2.png',
+    image: '/src/preview/titan.png',
     features: [
       'Protection 4 Armor',
       'Blast Protection 4 Armor',
@@ -65,7 +65,7 @@ export const kits = [
     price: 250.00,
     currency: 'INR',
     description: 'The ultimate Wood tier',
-    image: '/src/preview/kit-preview-1.png',
+    image: '/src/preview/wood.png',
     features: [
       'All Protection 4 On Armor',
       'Sharpness 5 And Smite 5 Sword',
