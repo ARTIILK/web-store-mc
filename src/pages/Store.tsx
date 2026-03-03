@@ -89,7 +89,7 @@ export default function Store() {
             </section>
 
             {/* Main Content */}
-            <div className="pb-32 px-6 max-w-7xl mx-auto space-y-40">
+            <div className="px-6 max-w-7xl mx-auto space-y-40">
                 {categories.map((category, idx) => (
                     <section key={category} id={category.toLowerCase()} className="scroll-mt-32">
                         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 px-2">
@@ -165,9 +165,10 @@ export default function Store() {
                         ))}
                     </div>
                 </section>
+            </div>
 
-                {/* Footer Section */}
-                <footer className="pt-20 pb-10 border-t border-white/5 text-center">
+            <footer className="mt-40 pt-20 pb-20 border-t border-white/5 text-center bg-black/20">
+                <div className="max-w-7xl mx-auto px-6">
                     <img src="/logo/woodmc.png" alt="WoodMC" className="h-12 w-auto mx-auto mb-8 opacity-50 grayscale hover:grayscale-0 transition-all cursor-pointer" />
                     <div className="flex justify-center gap-8 mb-8 text-xs font-black uppercase tracking-widest text-gray-500">
                         <a href="#" className="hover:text-white transition-colors">Discord</a>
@@ -179,8 +180,8 @@ export default function Store() {
                         &copy; 2026 WoodMC Network. All Rights Reserved. <br />
                         Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.
                     </p>
-                </footer>
-            </div>
+                </div>
+            </footer>
 
             <ProductModal
                 product={selectedProduct}
@@ -202,6 +203,6 @@ export default function Store() {
                     </motion.button>
                 )}
             </AnimatePresence>
-        </div>
+        </div >
     );
 }
