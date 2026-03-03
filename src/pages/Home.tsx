@@ -206,74 +206,80 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Featured Card 1 */}
+            {/* Featured Card 1 - Out of Stock */}
             <motion.div
               whileHover={{ y: -10 }}
-              className="glass-card rounded-2xl p-6 relative overflow-hidden group"
+              className="glass-card rounded-2xl p-6 relative overflow-hidden group opacity-60"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-mc-gold/10 rounded-full blur-3xl -mr-10 -mt-10 transition-all duration-500 group-hover:bg-mc-gold/20" />
+              <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-red-500/90 text-white text-xs font-bold uppercase tracking-wider animate-pulse">
+                Out of Stock
+              </div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gray-500/10 rounded-full blur-3xl -mr-10 -mt-10 transition-all duration-500 group-hover:bg-gray-500/20" />
               
-              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-mc-gold to-mc-orange flex items-center justify-center mb-6 shadow-lg">
-                <Crown size={32} className="text-mc-dark" />
+              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-gray-500 to-gray-600 flex items-center justify-center mb-6 shadow-lg">
+                <Crown size={32} className="text-gray-300" />
               </div>
               
-              <h3 className="text-2xl font-display font-bold text-white mb-2">MVP+ Rank</h3>
-              <p className="text-gray-400 mb-6 line-clamp-2">The ultimate rank for dedicated players. Includes fly, custom tags, and daily rewards.</p>
+              <h3 className="text-2xl font-display font-bold text-gray-400 mb-2">MVP+ Rank</h3>
+              <p className="text-gray-500 mb-6 line-clamp-2">The ultimate rank for dedicated players. Includes fly, custom tags, and daily rewards.</p>
               
               <div className="flex items-center justify-between mt-auto">
-                <span className="text-2xl font-bold text-mc-gold">$29.99</span>
-                <button className="px-4 py-2 rounded-lg bg-white/5 hover:bg-mc-gold hover:text-mc-dark text-white font-medium transition-all duration-300">
-                  View Details
+                <span className="text-2xl font-bold text-gray-500 line-through">$29.99</span>
+                <button disabled className="px-4 py-2 rounded-lg bg-gray-700 text-gray-500 cursor-not-allowed font-medium">
+                  Unavailable
                 </button>
               </div>
             </motion.div>
 
-            {/* Featured Card 2 */}
+            {/* Featured Card 2 - Out of Stock */}
             <motion.div
               whileHover={{ y: -10 }}
-              className="glass-card rounded-2xl p-6 relative overflow-hidden group border-mc-gold/30"
+              className="glass-card rounded-2xl p-6 relative overflow-hidden group opacity-60 border-gray-700"
             >
-              <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-mc-orange text-white text-xs font-bold uppercase tracking-wider animate-pulse">
-                Hot Deal
+              <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-red-500/90 text-white text-xs font-bold uppercase tracking-wider animate-pulse">
+                Out of Stock
               </div>
-              <div className="absolute top-0 right-0 w-32 h-32 bg-mc-orange/10 rounded-full blur-3xl -mr-10 -mt-10 transition-all duration-500 group-hover:bg-mc-orange/20" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gray-500/10 rounded-full blur-3xl -mr-10 -mt-10 transition-all duration-500 group-hover:bg-gray-500/20" />
               
-              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mb-6 shadow-lg">
-                <Zap size={32} className="text-white" />
+              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-gray-500 to-gray-600 flex items-center justify-center mb-6 shadow-lg">
+                <Zap size={32} className="text-gray-300" />
               </div>
               
-              <h3 className="text-2xl font-display font-bold text-white mb-2">Winter Bundle</h3>
-              <p className="text-gray-400 mb-6 line-clamp-2">Get the MVP rank, 5x Mythic Crates, and exclusive Winter cosmetics.</p>
+              <h3 className="text-2xl font-display font-bold text-gray-400 mb-2">Winter Bundle</h3>
+              <p className="text-gray-500 mb-6 line-clamp-2">Get the MVP rank, 5x Mythic Crates, and exclusive Winter cosmetics.</p>
               
               <div className="flex items-center justify-between mt-auto">
                 <div className="flex flex-col">
-                  <span className="text-sm text-gray-500 line-through">$49.99</span>
-                  <span className="text-2xl font-bold text-mc-orange">$34.99</span>
+                  <span className="text-sm text-gray-600 line-through">$49.99</span>
+                  <span className="text-2xl font-bold text-gray-500 line-through">$34.99</span>
                 </div>
-                <button className="px-4 py-2 rounded-lg bg-mc-orange hover:bg-mc-orange/80 text-white font-medium transition-all duration-300">
-                  View Details
+                <button disabled className="px-4 py-2 rounded-lg bg-gray-700 text-gray-500 cursor-not-allowed font-medium">
+                  Unavailable
                 </button>
               </div>
             </motion.div>
 
-            {/* Featured Card 3 */}
+            {/* Featured Card 3 - Out of Stock */}
             <motion.div
               whileHover={{ y: -10 }}
-              className="glass-card rounded-2xl p-6 relative overflow-hidden group"
+              className="glass-card rounded-2xl p-6 relative overflow-hidden group opacity-60"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl -mr-10 -mt-10 transition-all duration-500 group-hover:bg-blue-500/20" />
+              <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-red-500/90 text-white text-xs font-bold uppercase tracking-wider animate-pulse">
+                Out of Stock
+              </div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gray-500/10 rounded-full blur-3xl -mr-10 -mt-10 transition-all duration-500 group-hover:bg-gray-500/20" />
               
-              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center mb-6 shadow-lg">
-                <Shield size={32} className="text-white" />
+              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-gray-500 to-gray-600 flex items-center justify-center mb-6 shadow-lg">
+                <Shield size={32} className="text-gray-300" />
               </div>
               
-              <h3 className="text-2xl font-display font-bold text-white mb-2">God Kit</h3>
-              <p className="text-gray-400 mb-6 line-clamp-2">Start your journey with the most powerful enchanted diamond armor and weapons.</p>
+              <h3 className="text-2xl font-display font-bold text-gray-400 mb-2">God Kit</h3>
+              <p className="text-gray-500 mb-6 line-clamp-2">Start your journey with the most powerful enchanted diamond armor and weapons.</p>
               
               <div className="flex items-center justify-between mt-auto">
-                <span className="text-2xl font-bold text-blue-400">$14.99</span>
-                <button className="px-4 py-2 rounded-lg bg-white/5 hover:bg-blue-500 hover:text-white text-white font-medium transition-all duration-300">
-                  View Details
+                <span className="text-2xl font-bold text-gray-500 line-through">$14.99</span>
+                <button disabled className="px-4 py-2 rounded-lg bg-gray-700 text-gray-500 cursor-not-allowed font-medium">
+                  Unavailable
                 </button>
               </div>
             </motion.div>
