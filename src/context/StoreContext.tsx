@@ -28,7 +28,7 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await parseCSV('/src/data/store.csv');
+                const data = await parseCSV('/data/store.csv');
                 setProducts(data);
             } catch (error) {
                 console.error('Failed to load store data:', error);

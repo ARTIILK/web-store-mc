@@ -20,16 +20,24 @@ export const parseCSV = async (filePath: string): Promise<StoreItem[]> => {
             header: true,
             skipEmptyLines: true,
             complete: (results) => {
-                const transformedData: StoreItem[] = results.data.map((row: any) => ({
-                    ...row,
-                    price_inr: parseFloat(row.price_inr) || 0,
-                    coins: row.coins ? parseInt(row.coins) : undefined,
-                    limited: row.limited?.toLowerCase() === 'true',
-                    features: row.features ? row.features.split(';').map((f: string) => f.trim()) : [],
-                }));
+                // Log the raw data to debug visibility issues
+                console.log('Raw CSV results:', results.data);
+
+                const transformedData: StoreItem[] = results.data
+                    .filter((row: any) => row.id && row.name) // Ensure we have valid rows
+                    .map((row: any) => ({
+                        ...row,
+                        price_inr: parseFloat(row.price_inr) || 0,
+                        coins: row.coins ? parseInt(row.coins) : undefined,
+                        limited: String(row.limited).toLowerCase() === 'true',
+                        features: row.features ? row.features.split(';').map((f: string) => f.trim()) : [],
+                    }));
+
+                console.log('Transformed store items:', transformedData);
                 resolve(transformedData);
             },
             error: (error) => {
+                console.error('PapaParse error:', error);
                 reject(error);
             }
         });
