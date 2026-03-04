@@ -1,51 +1,55 @@
-# 🌲 WoodMC Dynamic Store Engine (V2)
+# WoodMC Dynamic Store Engine (V2)
 
-A completely rebuilt, data-driven Minecraft store frontend. This version is powered by a central CSV architecture, allowing for instantaneous updates without code modification.
+A high-performance, data-driven Minecraft storefront designed for the WoodMC Network. This store features a "Zero-Code" philosophy where inventory and pricing are managed via a central CSV file, with a specialized interface for custom currency purchases.
 
-## 🎯 The "Zero-Code" Philosophy
-This storefront is designed so that store administrators can manage the entire inventory using only a spreadsheet. 
-- **Change a Price**: Edit `store.csv` → Site updates.
-- **Add a Rank**: New row in `store.csv` → Appears instantly.
-- **Create a Sale**: Update `badge` or `limited` column → UI reacts.
+## 🚀 Key Features
 
-## ✨ Core Features
-- **📊 CSV Engine**: Integrated `PapaParse` for high-performance data hydration.
-- **🏷️ Dynamic Categorization**: Automatically groups products into "Ranks", "Special", etc.
-- **🛒 Context Cart**: Custom state management for a fluid shopping experience.
-- **💎 Premium Minecraft UI**: Dark theme, gold gradients, and motion-enhanced cards.
-- **📱 Responsive Layout**: Pixel-perfect on mobile, tablet, and desktop.
+- **Custom Coin Engine**: Users can purchase specific amounts of WoodCoins at a fixed rate (20 Coins = ₹1 INR) using an interactive slider and preset system.
+- **Category-Based Routing**: Clean separation between Homepage, Ranks, and Coins using React Router.
+- **Performance Optimized**: 
+  - Minimal Three.js overhead for low-end device compatibility.
+  - Reduced visual effects (removed heavy tints and blurs) for a sharp, readable UI.
+  - Grayscale and low-opacity 3D background to ensure zero color interference.
+- **Advanced Checkout**: 
+  - Dual-pane checkout modal with real-time order summary.
+  - Manual payment mode with a "Copy Bill" feature for Discord-based verification.
+  - Discord Webhook integration for instant order notifications.
+- **Responsive Design**: Fully compatible with desktop, tablet, and mobile devices.
 
-## 🛠️ Data Structure (`store.csv`)
-| Column | Description |
-| :--- | :--- |
-| `id` | Unique identifier |
-| `category` | Controls which section the item appears in |
-| `name` | Product title |
-| `price_inr` | Cost in ₹ (INR) |
-| `coins` | Bonus store coins (if applicable) |
-| `description` | Short marketing text |
-| `image` | Filename in `src/preview/` |
-| `badge` | e.g., "HOT", "SALE" (Optional) |
-| `limited` | Set "true" to show "Removing Soon" warning |
-| `features` | Semi-colon separated list (e.g., "Sharp IV;Unb III") |
+## 🛠 Tech Stack
 
-## 🚀 Technical Implementation
-- **Vite 6** & **React 19**
-- **Tailwind CSS 4** (Utility-first styling)
-- **Framer Motion** (Fluid animations)
-- **Lucide React** (Consistent iconography)
-- **PapaParse** (CSV Parsing)
+- **Frontend**: React 19, TypeScript, Vite 6, Tailwind CSS 4, Framer Motion.
+- **Backend**: Express.js (Node.js).
+- **Icons**: Lucide React.
+- **Data Source**: CSV-based inventory system (`public/data/store.csv`).
 
-## 📁 Updated Structure
-```text
-src/
-├── components/     # Navbar, Cart, Product Cards, Modals
-├── context/        # StoreContext (Global State & Cart Logic)
-├── data/           # store.csv (The ONLY data source)
-├── pages/          # Layout and Sections
-├── utils/          # CSV utility functions
-└── index.css       # Premium Design Tokens
-```
+## 📂 Project Structure
+
+- `src/pages/`: Contains the main views (Home, Ranks, Coins).
+- `src/components/`: Reusable UI components like the Navbar, ProductCards, and Modals.
+- `src/context/`: Global state management for the shopping cart.
+- `server/`: Backend logic for handling checkout requests and Discord notifications.
+- `public/data/store.csv`: The primary data source for rank listings.
+
+## ⚙️ Setup & Configuration
+
+1. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+
+2. **Environment Variables**:
+   Create a `.env` file based on `.env.example`:
+   - `PORT`: Backend server port (default: 3001).
+   - `DISCORD_WEBHOOK_URL`: Your Discord channel webhook for orders.
+
+3. **Development**:
+   - Start Frontend: `npm run dev` (Runs on port 5000).
+   - Start Backend: `npm run server` (Runs on port 3001).
+
+## 🛡 Disclaimer
+
+WoodMC is not affiliated with Mojang AB or Microsoft. All purchases go towards supporting the WoodMC Network development and maintenance.
 
 ---
-Developed by Antigravity for WoodMC Network.
+Developed for WoodMC Network.
