@@ -1,44 +1,23 @@
-# WoodMC Dynamic Store Engine (V2)
+# WoodMC Dynamic Store Engine (V2) - Vercel Refactor
 
-A data-driven Minecraft storefront frontend for the WoodMC Network. Uses a "Zero-Code" CSV-driven inventory system.
+This project is a high-performance Minecraft server web store built with React 19, TypeScript, and Tailwind CSS. It has been refactored for **Vercel Serverless** deployment.
 
 ## Architecture
+- **Frontend**: React 19, Vite 6, Tailwind CSS 4, Framer Motion.
+- **Backend**: Vercel Serverless Functions (Node.js).
+- **Data**: CSV-based inventory system (`public/data/store.csv`).
+- **Notifications**: Discord Webhook integration.
 
-- **Frontend**: React 19 + TypeScript + Vite 6 + Tailwind CSS 4 + Framer Motion + Three.js
-- **Backend**: Express.js (Node.js) with Discord webhook integration
-- **Data**: `public/data/store.csv` drives all store inventory and pricing
+## Key Changes for Vercel
+1. **Removed Express**: The persistent Express server and `server/` directory were deleted.
+2. **Serverless API**: Created `/api/checkout.ts` to handle POST requests and Discord alerts.
+3. **Relative Paths**: Frontend now calls `/api/checkout` instead of a local port.
+4. **Environment Variables**: Uses `DISCORD_WEBHOOK_URL` from the environment.
 
-## Project Layout
+## Getting Started
+1. Install dependencies: `npm install`
+2. Run development: `npm run dev`
+3. Build for production: `npm run build`
 
-```
-/
-├── src/              # React frontend source
-│   ├── components/   # UI components (Navbar, ProductCard, Scene3D, etc.)
-│   ├── context/      # StoreContext for cart state
-│   ├── pages/        # Page layouts (Store.tsx)
-│   └── utils/        # Helpers (csvParser, cn)
-├── server/           # Express backend
-│   └── index.ts      # POST /api/checkout endpoint
-├── public/           # Static assets
-│   └── data/
-│       └── store.csv # Primary data source
-├── vite.config.ts    # Vite config (port 5000, proxy /api -> localhost:3001)
-└── package.json
-```
-
-## Workflows
-
-- **Start application**: `npm run dev` — Vite frontend on port 5000 (webview)
-- **Backend API**: `npm run server` — Express API on port 3001 (console)
-
-## Environment Variables
-
-Create a `.env` file (see `.env.example`):
-- `PORT` — Backend port (default: 3001)
-- `DISCORD_WEBHOOK_URL` — Discord webhook for order notifications
-
-## Key Notes
-
-- Frontend proxies `/api` requests to the backend at `localhost:3001`
-- Store inventory is managed via `public/data/store.csv` — no code changes needed
-- Discord webhook is optional; orders log to console if not configured
+## Deployment
+Deploy to Vercel and ensure `DISCORD_WEBHOOK_URL` is set in the Project Settings.

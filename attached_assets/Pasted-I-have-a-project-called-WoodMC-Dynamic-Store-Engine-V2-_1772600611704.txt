@@ -1,0 +1,161 @@
+I have a project called WoodMC Dynamic Store Engine (V2).
+
+Current stack:
+
+React 19
+
+TypeScript
+
+Vite 6
+
+Tailwind CSS 4
+
+Framer Motion
+
+Express.js backend
+
+CSV inventory system (public/data/store.csv)
+
+Discord webhook integration for order notifications
+
+Goal:
+Refactor this project so it can be deployed on Vercel without a persistent Express server.
+
+Important:
+Vercel does NOT support long-running Express servers. Replace Express with Vercel serverless functions inside an /api directory.
+
+Required Changes
+1. Remove Express Server
+
+Delete:
+
+server/ folder
+
+Express setup
+
+Any app.listen
+
+Any backend port usage
+
+All backend logic must move to Vercel serverless functions.
+
+2. Create Vercel API Route
+
+Create:
+
+/api/checkout.ts
+
+This function must:
+
+Accept POST requests only
+
+Read JSON body:
+
+username
+
+items (array of objects with name and price)
+
+total
+
+paymentMethod
+
+Send a formatted Discord webhook message using process.env.DISCORD_WEBHOOK_URL
+
+Return JSON response { success: true }
+
+Example webhook format:
+
+New Order - WoodMC Store
+
+User: {username}
+Items:
+
+Item 1
+
+Item 2
+
+Total: ₹{total}
+Payment Method: {paymentMethod}
+
+Use native fetch (Node 18 compatible).
+
+3. Update Frontend Checkout Logic
+
+Modify checkout request so it sends POST request to:
+
+/api/checkout
+
+Instead of:
+http://localhost:3001/checkout
+
+Use relative path so it works in production.
+
+4. Keep CSV System
+
+Keep:
+
+public/data/store.csv
+
+Ensure frontend still loads it correctly using fetch.
+
+No backend CSV processing needed.
+
+5. Add Environment Variable Support
+
+Ensure project expects:
+
+DISCORD_WEBHOOK_URL
+
+Do NOT hardcode webhook.
+
+6. Optimize for Vercel Deployment
+
+Make sure:
+
+No Node-only imports inside frontend
+
+No Express imports
+
+No server ports
+
+No long-running processes
+
+No WebSocket usage
+
+This must be fully serverless compatible.
+
+7. Final Folder Structure Should Be
+
+/ src
+/ public
+/ api
+checkout.ts
+package.json
+vite.config.ts
+
+No server folder.
+
+8. Ensure Build Works
+
+Project must:
+
+Build successfully with npm run build
+
+Work locally with npm run dev
+
+Work when deployed to Vercel
+
+9. Add Error Handling
+
+In /api/checkout.ts:
+
+Return 405 if method not POST
+
+Return 500 if webhook fails
+
+Return 200 only on success
+
+Do not remove existing UI, routing, or store logic.
+Only refactor backend architecture for Vercel serverless compatibility.
+
+End result must be production ready.
