@@ -12,20 +12,13 @@ interface CheckoutModalProps {
   onClose: () => void;
 }
 
-export default function CheckoutModal({
-  items,
-  total,
-  onClose,
-}: CheckoutModalProps) {
+export default function CheckoutModal({ items, total, onClose }: CheckoutModalProps) {
   const [ign, setIgn] = useState("");
   const [discord, setDiscord] = useState("");
   const [email, setEmail] = useState("");
+  const [billPreview, setBillPreview] = useState("");
 
   const generateBill = () => {
-    if (!ign || !discord || !email) {
-      return "Please enter IGN, Discord username and Email.";
-    }
-
     const itemList = items
       .map((item) => `• ${item.name} x${item.quantity} - ₹${item.price}`)
       .join("\n");
@@ -41,14 +34,13 @@ ${itemList}
 
 Total: ₹${total}
 
-Payment Method: QR
+Payment Method: QR Code
 
 Steps:
-1. Scan the QR code and complete the payment.
+1. Scan the QR code and complete payment.
 2. Click 'Copy Bill'.
 3. Send the bill to the server owner on Discord.
-4. After verification you will receive your item in-game.
-`;
+4. After verification you will receive your item in-game.`;
   };
 
   const copyBill = () => {
@@ -57,8 +49,13 @@ Steps:
       return;
     }
 
-    navigator.clipboard.writeText(generateBill());
-    alert("Bill copied! Send it to the server owner.");
+    const bill = generateBill();
+
+    setBillPreview(bill);
+
+    navigator.clipboard.writeText(bill);
+
+    alert("Bill copied! Send it to the server owner on Discord.");
   };
 
   return (
@@ -66,7 +63,6 @@ Steps:
       <div className="bg-[#0b0b0b] w-[520px] rounded-xl p-6 text-white relative">
 
         {/* CLOSE BUTTON */}
-
         <button
           onClick={onClose}
           className="absolute right-4 top-4 text-gray-400 hover:text-white"
@@ -81,7 +77,6 @@ Steps:
         </p>
 
         {/* USER DETAILS */}
-
         <div className="space-y-3 mb-4">
           <input
             type="text"
@@ -108,14 +103,12 @@ Steps:
           />
         </div>
 
-        {/* BILL */}
-
+        {/* BILL PREVIEW */}
         <div className="bg-black border border-gray-800 rounded-lg p-4 text-sm mb-4 whitespace-pre-wrap">
-          {ign && discord && email ? generateBill() : "Fill your details to generate the bill."}
+          {billPreview || "Fill your details and click Copy Bill to generate your purchase request."}
         </div>
 
         {/* QR PAYMENT */}
-
         <div className="text-center mb-4">
           <p className="font-semibold mb-2">Scan QR to Pay</p>
 
@@ -127,7 +120,6 @@ Steps:
         </div>
 
         {/* INSTRUCTIONS */}
-
         <p className="text-xs text-gray-400 text-center mb-5">
           Pay using the QR code above. After payment copy the bill and DM it
           to the server owner for verification. Once verified, your item will
@@ -135,7 +127,6 @@ Steps:
         </p>
 
         {/* BUTTONS */}
-
         <button
           onClick={copyBill}
           className="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-semibold py-3 rounded-lg"
