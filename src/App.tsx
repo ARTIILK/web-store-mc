@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Ranks from './pages/Ranks';
 import Coins from './pages/Coins';
+import NotFound from './pages/NotFound';
 import Scene3D from './components/Scene3D';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/ranks" element={<Ranks />} />
                 <Route path="/coins" element={<Coins />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
 
