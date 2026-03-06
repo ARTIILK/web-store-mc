@@ -111,7 +111,7 @@ Steps:
         {/* BILL */}
 
         <div className="bg-black border border-gray-800 rounded-lg p-4 text-sm mb-4 whitespace-pre-wrap">
-          {generateBill()}
+          {ign && discord && email ? generateBill() : "Fill your details to generate the bill."}
         </div>
 
         {/* QR PAYMENT */}
