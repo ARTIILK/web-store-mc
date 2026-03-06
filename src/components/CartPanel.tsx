@@ -154,7 +154,11 @@ export default function CartPanel() {
                                         </div>
                                     </div>
                                     <button
-                                        onClick={() => setCheckoutOpen(true)}
+                                        onClick={() => {
+                                            if (cart.length > 0) {
+                                                setCheckoutOpen(true);
+                                            }
+                                        }}
                                         className="w-full py-4 bg-mc-gold text-mc-dark font-black rounded-xl transition-colors flex items-center justify-center gap-2 group"
                                     >
                                         Proceed to Checkout
