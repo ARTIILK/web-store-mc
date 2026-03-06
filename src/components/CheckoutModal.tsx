@@ -1,224 +1,158 @@
-import { motion, AnimatePresence } from "motion/react";
-import { X, User, Mail, Send, Copy, CheckCircle2 } from "lucide-react";
-import { useState } from "react";
-import { useStore } from "../context/StoreContext";
+import React, { useState } from "react";
 
-interface Props {
-    isOpen: boolean;
-    onClose: () => void;
-    total: number;
-    mode?: "form" | "manual";
+interface CartItem {
+  name: string;
+  price: number;
+  quantity: number;
+}
+
+interface CheckoutModalProps {
+  items: CartItem[];
+  total: number;
+  onClose: () => void;
 }
 
 export default function CheckoutModal({
-    isOpen,
-    onClose,
-    total,
-    mode = "manual",
-}: Props) {
-    const { cart } = useStore();
+  items,
+  total,
+  onClose,
+}: CheckoutModalProps) {
+  const [ign, setIgn] = useState("");
+  const [discord, setDiscord] = useState("");
+  const [email, setEmail] = useState("");
 
-    const [copied, setCopied] = useState(false);
-    const [loading, setLoading] = useState(false);
-    const [success, setSuccess] = useState(false);
+  const generateBill = () => {
+    if (!ign || !discord || !email) {
+      return "Please enter IGN, Discord username and Email.";
+    }
 
-    const [formData, setFormData] = useState({
-        mcUsername: "",
-        discordUsername: "",
-        email: "",
-    });
+    const itemList = items
+      .map((item) => `• ${item.name} x${item.quantity} - ₹${item.price}`)
+      .join("\n");
 
-    // ------------------------
-    // Generate Bill Text
-    // ------------------------
+    return `🧾 NEW PURCHASE REQUEST
 
-    const generateBill = () => {
-        return `
-🧾 NEW PURCHASE REQUEST
-
-Minecraft Username: ${formData.mcUsername || "Not Provided"}
-Discord Username: ${formData.discordUsername || "Not Provided"}
-Email: ${formData.email || "Not Provided"}
+Minecraft IGN: ${ign}
+Discord Username: ${discord}
+Email: ${email}
 
 Items:
-${cart
-    .map((item) => `• ${item.name} x${item.quantity} - ₹${item.price_inr}`)
-    .join("\n")}
+${itemList}
 
-Total Amount: ₹${total.toFixed(2)}
+Total: ₹${total}
 
-Please verify payment.
-        `;
-    };
+Payment Method: QR
 
-    const handleCopy = async () => {
-        await navigator.clipboard.writeText(generateBill());
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-    };
+Steps:
+1. Scan the QR code and complete the payment.
+2. Click 'Copy Bill'.
+3. Send the bill to the server owner on Discord.
+4. After verification you will receive your item in-game.
+`;
+  };
 
-    // ------------------------
-    // Normal Form Submit
-    // ------------------------
+  const copyBill = () => {
+    if (!ign || !discord || !email) {
+      alert("Please fill IGN, Discord username and Email.");
+      return;
+    }
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setLoading(true);
+    navigator.clipboard.writeText(generateBill());
+    alert("Bill copied! Send it to the server owner.");
+  };
 
-        try {
-            const response = await fetch("/api/checkout", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    ...formData,
-                    items: cart,
-                    totalAmount: total,
-                }),
-            });
+  return (
+    <div className="fixed inset-0 flex items-center justify-center bg-black/70 z-50">
+      <div className="bg-[#0b0b0b] w-[520px] rounded-xl p-6 text-white relative">
 
-            if (response.ok) {
-                setSuccess(true);
-            }
-        } catch (err) {
-            alert("Checkout failed.");
-        } finally {
-            setLoading(false);
-        }
-    };
+        {/* CLOSE BUTTON */}
 
-    return (
-        <AnimatePresence>
-            {isOpen && (
-                <div className="fixed inset-0 z-[150] flex items-center justify-center p-4 bg-black/95">
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="bg-mc-dark border border-white/10 rounded-3xl w-full max-w-lg overflow-hidden"
-                    >
-                        <div className="p-8">
-                            {/* Header */}
-                            <div className="flex justify-between items-center mb-6">
-                                <h2 className="text-2xl font-black text-white uppercase">
-                                    {mode === "manual"
-                                        ? "Manual Checkout"
-                                        : "Finalize Checkout"}
-                                </h2>
-                                <button onClick={onClose}>
-                                    <X size={20} />
-                                </button>
-                            </div>
+        <button
+          onClick={onClose}
+          className="absolute right-4 top-4 text-gray-400 hover:text-white"
+        >
+          ✕
+        </button>
 
-                            {/* TOTAL */}
-                            <p className="text-mc-gold font-bold mb-6">
-                                Total: ₹{total.toFixed(2)}
-                            </p>
+        <h2 className="text-xl font-bold mb-2">MANUAL CHECKOUT</h2>
 
-                            {/* ============================= */}
-                            {/* NORMAL FORM MODE */}
-                            {/* ============================= */}
+        <p className="text-yellow-400 font-semibold mb-4">
+          Total: ₹{total.toFixed(2)}
+        </p>
 
-                            {mode === "form" && !success && (
-                                <form
-                                    onSubmit={handleSubmit}
-                                    className="space-y-4"
-                                >
-                                    <input
-                                        required
-                                        type="text"
-                                        placeholder="Minecraft Username"
-                                        className="w-full bg-black/40 border border-white/10 rounded-xl p-4 text-white"
-                                        value={formData.mcUsername}
-                                        onChange={(e) =>
-                                            setFormData({
-                                                ...formData,
-                                                mcUsername: e.target.value,
-                                            })
-                                        }
-                                    />
+        {/* USER DETAILS */}
 
-                                    <input
-                                        required
-                                        type="text"
-                                        placeholder="Discord Username"
-                                        className="w-full bg-black/40 border border-white/10 rounded-xl p-4 text-white"
-                                        value={formData.discordUsername}
-                                        onChange={(e) =>
-                                            setFormData({
-                                                ...formData,
-                                                discordUsername: e.target.value,
-                                            })
-                                        }
-                                    />
+        <div className="space-y-3 mb-4">
+          <input
+            type="text"
+            placeholder="Minecraft IGN"
+            value={ign}
+            onChange={(e) => setIgn(e.target.value)}
+            className="w-full p-2 rounded bg-[#1a1a1a] border border-gray-700"
+          />
 
-                                    <input
-                                        required
-                                        type="email"
-                                        placeholder="Email Address"
-                                        className="w-full bg-black/40 border border-white/10 rounded-xl p-4 text-white"
-                                        value={formData.email}
-                                        onChange={(e) =>
-                                            setFormData({
-                                                ...formData,
-                                                email: e.target.value,
-                                            })
-                                        }
-                                    />
+          <input
+            type="text"
+            placeholder="Discord Username"
+            value={discord}
+            onChange={(e) => setDiscord(e.target.value)}
+            className="w-full p-2 rounded bg-[#1a1a1a] border border-gray-700"
+          />
 
-                                    <button
-                                        type="submit"
-                                        disabled={loading}
-                                        className="w-full py-4 bg-mc-gold text-mc-dark font-black rounded-xl"
-                                    >
-                                        {loading
-                                            ? "Processing..."
-                                            : "Confirm & Pay"}
-                                    </button>
-                                </form>
-                            )}
+          <input
+            type="email"
+            placeholder="Email Address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full p-2 rounded bg-[#1a1a1a] border border-gray-700"
+          />
+        </div>
 
-                            {mode === "form" && success && (
-                                <div className="text-center py-10">
-                                    <CheckCircle2
-                                        className="mx-auto text-green-400 mb-4"
-                                        size={40}
-                                    />
-                                    <p className="text-white">
-                                        Order placed successfully.
-                                    </p>
-                                </div>
-                            )}
+        {/* BILL */}
 
-                            {/* ============================= */}
-                            {/* MANUAL MODE */}
-                            {/* ============================= */}
+        <div className="bg-black border border-gray-800 rounded-lg p-4 text-sm mb-4 whitespace-pre-wrap">
+          {generateBill()}
+        </div>
 
-                            {mode === "manual" && (
-                                <div className="space-y-4">
-                                    <textarea
-                                        readOnly
-                                        value={generateBill()}
-                                        className="w-full bg-black/40 border border-white/10 rounded-xl p-4 text-white h-64"
-                                    />
+        {/* QR PAYMENT */}
 
-                                    <button
-                                        onClick={handleCopy}
-                                        className="w-full py-4 bg-mc-gold text-mc-dark font-black rounded-xl flex justify-center gap-2"
-                                    >
-                                        <Copy size={18} />
-                                        {copied ? "Copied!" : "Copy Bill"}
-                                    </button>
+        <div className="text-center mb-4">
+          <p className="font-semibold mb-2">Scan QR to Pay</p>
 
-                                    <p className="text-xs text-gray-500 text-center">
-                                        Paste this inside a Discord ticket or DM
-                                        to <b>adhrav</b>
-                                    </p>
-                                </div>
-                            )}
-                        </div>
-                    </motion.div>
-                </div>
-            )}
-        </AnimatePresence>
-    );
+          <img
+            src="/QR/qr.png"
+            alt="Payment QR"
+            className="mx-auto w-44"
+          />
+        </div>
+
+        {/* INSTRUCTIONS */}
+
+        <p className="text-xs text-gray-400 text-center mb-5">
+          Pay using the QR code above. After payment copy the bill and DM it
+          to the server owner for verification. Once verified, your item will
+          be delivered in-game.
+        </p>
+
+        {/* BUTTONS */}
+
+        <button
+          onClick={copyBill}
+          className="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-semibold py-3 rounded-lg"
+        >
+          Copy Bill
+        </button>
+
+        <a
+          href="https://discord.com/users/OWNER_ID"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <button className="w-full mt-3 bg-indigo-600 hover:bg-indigo-500 py-3 rounded-lg">
+            DM Owner on Discord
+          </button>
+        </a>
+      </div>
+    </div>
+  );
 }
