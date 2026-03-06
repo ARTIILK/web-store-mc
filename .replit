@@ -54,6 +54,10 @@ externalPort = 3001
 localPort = 5000
 externalPort = 3000
 
+[[ports]]
+localPort = 5904
+externalPort = 80
+
 [deployment]
 deploymentTarget = "autoscale"
 run = ["bash", "-c", "npm run server & npx vite preview --port 5000 --host 0.0.0.0"]
